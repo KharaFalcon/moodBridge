@@ -1,0 +1,268 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: "Poppins", sans-serif;
+}
+
+.header {
+    width: 100%;
+    background: #ccffff;
+}
+
+.side-nav {
+    width: 250px;
+    height: 100%;
+    background: #ff6200;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px 30px;
+}
+.nav-links {
+    list-style: none;
+    position: relative;
+}
+
+.nav-links li {
+    padding: 10px 0;
+}
+
+.nav-links li a {
+    color: #000000;
+    text-decoration: none;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links li a i {
+    font-size: 22px;
+    margin-right: 20px;
+}
+
+.active {
+    background: #5e4436;
+    width: 100%;
+    height: 47px;
+    position: absolute;
+    left: 0;
+    top: 2.6%;
+    z-index: -1;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(93, 49, 35, 0.4);
+    display: none;
+    transition: top 0.5s;
+}
+
+.nav-links li:hover a {
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+.nav-links li:hover~.active {
+    display: block;
+}
+
+.nav-links li:nth-child(1):hover~.active {
+    top: 2.6%;
+}
+
+.nav-links li:nth-child(2):hover~.active {
+    top: 22%;
+}
+
+.nav-links li:nth-child(3):hover~.active {
+    top: 42%;
+}
+
+.nav-links li:nth-child(4):hover~.active {
+    top: 62%;
+}
+
+.nav-links li:nth-child(5):hover~.active {
+    top: 82%;
+}
+
+body {
+    text-align: center;
+    background-color:rgb(237, 227, 205);
+    padding: 0;
+}
+h1 {
+    font-family:Impact;
+    padding-bottom: 30px;
+    padding-top: 40px;
+}
+
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    
+}
+.dot span{
+    padding-left: 35px;
+    display: inline-block;
+    white-space: nowrap;
+    padding-top: 4px;
+
+}
+
+.container {
+    display: inline-block;
+}
+
+.moodBoard {
+    display: grid;
+    grid-template-columns: repeat(6, 100px);
+    grid-template-rows: repeat(6, 100px);
+    grid-gap: 8px;
+    padding-top:30px;
+}
+
+.cell {
+    /* center the cell content */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-family: Arial;
+    font-size: 1rem;
+    font-weight: bold;
+    background: white;
+    border-radius: 3px;
+}
+
+.cell.hovered {
+    border: 2px dashed;
+}
+
+.cell.darkRed {
+    background-color:rgb(184, 47, 47);
+}
+
+.mediumRed {
+    background-color: rgb(219, 69, 69);
+}
+
+.lightRed {
+    background-color: rgb(203, 129, 129);
+}
+
+.darkOrange {
+    background-color: rgb(211, 104, 27);
+}
+
+.mediumOrange {
+    background-color: rgb(219, 147, 69);
+}
+
+.lightOrange {
+    background-color: rgb(223, 187, 96);
+}
+
+
+.darkBlue {
+    background-color: rgb(12, 112, 170);
+}
+
+.mediumBlue {
+    background-color: rgb(80, 156, 211);
+}
+
+.lightBlue {
+    background-color: rgb(123, 194, 227);
+}
+
+
+.darkGreen {
+    background-color: rgb(50, 111, 41);
+}
+
+.mediumGreen {
+    background-color: rgb(95, 171, 99);
+}
+
+.lightGreen {
+    background-color: rgb(146, 220, 148);
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    font-size: 16px;
+    resize: none;
+}
+
+.extra-info {
+    margin-top: 80px;
+}
+
+.extra-info p {
+padding-bottom: 50px;
+}
+.eventBtn {
+    padding-bottom: 50px;
+}
+
+.btn {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 16px;
+    background-color: #fea64d;
+    border: orange solid 1px;
+    transition: background-color 0.3s, border-color 0.3s;
+    /* Add a transition for smooth color change */
+}
+
+.btn:hover {
+    background: #ffc67a;
+    border-color: #ffc67a;
+}
+
+.btn:active,
+.btn.clicked {
+    background-color: #5e4436;
+    border-color: #5e4436;
+}
+
+.btn:focus {
+    outline: none;
+    /* Remove the default focus outline */
+}
+
+.saveBtn {
+    margin-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left:150px;
+    padding-right: 150px;
+    border-radius: 16px;
+    background-color: #ff6200;
+    border: orange solid 1px;
+    transition: background-color 0.3s, border-color 0.3s;
+    /* Add a transition for smooth color change */
+}
+
+.saveBtn:hover {
+    background: #ff6200;
+    border-color: #ff6200;
+}
+
+.saveBtn:active,
+.saveBtn.clicked {
+    background-color: #5e4436;
+    border-color: #5e4436;
+}
+
+.saveBtn:focus {
+    outline: none;
+    /* Remove the default focus outline */
+}
