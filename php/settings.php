@@ -1,9 +1,14 @@
+
+    <?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <link rel="stylesheet" type="text/css" href="styles.css" />
+       <link rel="stylesheet" type="text/css" href="../styles.css" />
     <script src="script.js" defer></script>
     <title>MoodMeter</title>
 </head>
@@ -11,7 +16,7 @@
      <div class="header">
         <div class="side-nav">
             <ul class="nav-links">
-                <li><a href="moodmeter.html">
+                <li><a href="../moodmeter.html">
                         <i class="fa-solid fa-comment-dots"></i>
                         <p>Mood Meter</p>
                     </a>
@@ -21,12 +26,12 @@
                         <p>Analytics</p>
                     </a>
                 </li>
-                <li><a href="profile.html">
+                <li><a href="../profile.html">
                         <i class="fa-solid fa-box-open"></i>
                         <p>Profile</p>
                     </a>
                 </li>
-                <li><a href="settings.html">
+                <li><a href="settings.php">
                         <i class="fa-solid fa-chart-pie"></i>
                         <p>Settings</p>
                     </a>
@@ -36,5 +41,20 @@
         </div>
     </div>
     <h1>Settings</h1>
+
+
+
+
+        <p class="lead">Welcome <?php echo $_SESSION['loggedInUser']; ?>!</p>
+
+        <p><a href="logout.php" class="logoutBtn">Log out</a></p>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+
+</html>
 </body>
 </html>
