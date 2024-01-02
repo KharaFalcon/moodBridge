@@ -2,6 +2,9 @@ const cells = document.querySelectorAll(".cell");
 var buttonSave = document.querySelectorAll(".saveBtn");
 var buttons = document.querySelectorAll(".btn");
 
+// Create an array to store emotions with dots
+let emotionsWithDots = [];
+
 // Loop through each cells element
 cells.forEach(cell => {
     // When a draggable element is dragged over a cell element
@@ -28,21 +31,42 @@ cells.forEach(cell => {
 
         // Remove the "hovered" class from the cell
         cell.classList.remove("hovered");
-        console.log(cell.id);
-        displayEmotion(cell.id);
-    });
-});
+    
+           // Get the emotion ID from the cell
+        const emotionId = cell.id;
 
-   function displayEmotion(emotionId) {
-            // Find the selected emotion div
-            const selectedEmotion = document.getElementById(emotionId);
-            // Get the text content of the selected emotion
-            const emotionText = selectedEmotion.textContent;
-
-            // Display the selected emotion text in the <p> tag
-            const displayArea = document.getElementById('selectedEmotion');
-            displayArea.textContent = emotionText;
+        // Add the emotion to the array if not already added
+        if (!emotionsWithDots.includes(emotionId)) {
+            emotionsWithDots.push(emotionId);
         }
+
+        console.log(emotionsWithDots);
+        displayEmotion(emotionsWithDots);
+    });
+    });
+
+
+function displayEmotion(emotionIds) {
+    // Get the display area element
+    const displayArea = document.getElementById('selectedEmotion');
+
+    // Check if there are any emotions to display
+    if (emotionIds.length > 0) {
+        // Get the text content of each emotion and join them into a string
+        const emotionsText = emotionIds.map(emotionId => {
+            const selectedEmotion = document.getElementById(emotionId);
+            return selectedEmotion.textContent;
+        }).join(', ');
+
+        // Display the emotions text in the <p> tag
+        displayArea.textContent = emotionsText;
+    } else {
+        // If there are no emotions, display a default message
+        displayArea.textContent = 'No emotions selected';
+    }
+}
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -70,3 +94,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 });
+
+// Function to get the current date and time
+function getCurrentDate() {
+  const dateTime = new Date();
+  return dateTime.toLocaleDateString();
+
+ 
+}
+
+// Target an HTML element to display the current date and time
+const dateDisplay = document.getElementById("date-container");
+
+// Set the innerHTML of the element to the current date and time returned by the function
+dateDisplay.innerHTML = getCurrentDate();

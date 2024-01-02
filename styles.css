@@ -266,3 +266,16 @@ padding-bottom: 50px;
     outline: none;
     /* Remove the default focus outline */
 }
+
+
+/*HOME*/
+#welcomeMsg {
+    font-size: 30px;
+    margin-top: 50px;
+}
+
+#date-container {
+    font-size: 25px;
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
