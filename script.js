@@ -4,6 +4,8 @@ var buttons = document.querySelectorAll(".btn");
 
 // Create an array to store emotions with dots
 let emotionsWithDots = [];
+//creates an array to store activities selected
+let activities = []; 
 
 // Loop through each cells element
 cells.forEach(cell => {
@@ -23,6 +25,8 @@ cells.forEach(cell => {
         e.preventDefault(); // Prevent default behavior
 
         // Create a dot element
+        //if statment to only select one emotion
+        if(emotionsWithDots.length < 5){
         const dot = document.createElement("div");
         dot.classList.add("dot");
 
@@ -38,11 +42,32 @@ cells.forEach(cell => {
         // Add the emotion to the array if not already added
         if (!emotionsWithDots.includes(emotionId)) {
             emotionsWithDots.push(emotionId);
+        }}
+        else {
+            //error message for only having five emotions needs adding 
         }
-
-        console.log(emotionsWithDots);
+         console.log(emotionsWithDots);
         displayEmotion(emotionsWithDots);
+
+     cell.addEventListener("click", (e) => {
+        const dot = e.target.closest(".dot");
+        if (dot) {
+            // Remove the dot from the cell
+            dot.remove();
+
+            // Get the emotion ID from the cell
+            const emotionId = cell.id;
+
+            // Remove the emotion from the array
+            const index = emotionsWithDots.indexOf(emotionId);
+            if (index !== -1) {
+                emotionsWithDots.splice(index, 1);
+            }
+        }
+   displayEmotion(emotionsWithDots);
+               console.log(emotionsWithDots);
     });
+});
     });
 
 
@@ -64,23 +89,40 @@ function displayEmotion(emotionIds) {
         // If there are no emotions, display a default message
         displayArea.textContent = 'No emotions selected';
     }
+   
 }
 
-
-
+const clickCounts = {};
 document.addEventListener("DOMContentLoaded", function () {
-
-
     buttons.forEach(function (button) {
+          clickCounts[button.id] = 0;
         button.addEventListener("click", function () {
+             clickCounts[button.id]++;
             // Toggle the 'clicked' class on the clicked button
             button.classList.toggle("clicked");
+
+              // Get the activity ID from the btns
+        const activityId = button.id;
+            //adds activitiy to array if it has not already been added
+                     // Check if the button was clicked for the second time
+            if (clickCounts[activityId] % 2 === 0) {
+                // If it was clicked for the second time, remove the activity from the array
+                const index = activities.indexOf(activityId);
+                if (index !== -1) {
+                    activities.splice(index, 1);
+                }
+            } else {
+                // If it was clicked for the first time, add the activity to the array
+                if (!activities.includes(activityId)) {
+                    activities.push(activityId);
+                }
+            }
+console.log(activities);
         });
     });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-   
     buttonSave.forEach(function (button) {
         button.addEventListener("click", function () {
             // Toggle the 'clicked' class on the clicked button

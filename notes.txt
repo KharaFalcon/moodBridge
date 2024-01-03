@@ -1,1 +1,3 @@
 add maximum of four or five emotion need validation in the array and the display of the emotions
+add error messages 
+add removal of activies when clciekd again and remove from array.

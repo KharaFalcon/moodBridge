@@ -1,13 +1,19 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MoodFlag</title>
     <link rel="stylesheet" type="text/css" href="styles.css" />
-       <script src="script.js" defer></script>
+    <script src="script.js" defer></script>
 
 </head>
+
 <body>
     <div class="header">
         <div class="side-nav">
@@ -36,9 +42,10 @@
             </ul>
         </div>
     </div>
-     <h2 id="welcomeMsg">Khara, How are you doing?</h2>
-    <p id="date-container">Add todays date</p>
-    
+
+    <h2 id="welcomeMsg"><?php echo $_SESSION['loggedInUser']; ?>, How are you doing?</h2>
+    <p id="date-container"></p>
+
     <div class="container">
         <div class="dot" draggable="true"><span>Emotion Pin</span></div>
         <div class="moodBoard">
@@ -86,30 +93,31 @@
 
         </div>
         <div class="extra-info">
-        <h3>You are feeling.... <span id="selectedEmotion"></span></h3>
-        <p>What has affected your mood?</p>
-        <div class="eventBtn">
-            <input type="button" class="btn" id="Exercise" value="+ Exercise" />
-            <input type="button" class="btn" id="Friends" value="+ Friends" />
-            <input type="button" class="btn" id="Family" value="+ Family" />
-            <input type="button" class="btn" id="Stress" value="+ Stress" />
-             <br />
-            <input type="button" class="btn" id="Weather" value="+ Weather" />
-            <input type="button" class="btn" id="Work" value="+ Work" />
-            <input type="button" class="btn" id="Love" value="+ Love" />
-            <input type="button" class="btn" id="Sleep" value="+ Sleep" />
-             <br />
-            <input type="button" class="btn" id="Health" value="+ Health" />
-            <input type="button" class="btn" id="Money" value="+ Money" />
-            <input type="button" class="btn" id="News" value="+ News" />
-            <input type="button" class="btn" id="Holiday" value="+ Holiday" />
-            <input type="button" class="btn" id="Food" value="+ Food" />
+            <h3>You are feeling.... <span id="selectedEmotion"></span></h3>
+            <p>What has affected your mood?</p>
+            <div class="eventBtn">
+                <input type="button" class="btn" id="Exercise" value="+ Exercise" />
+                <input type="button" class="btn" id="Friends" value="+ Friends" />
+                <input type="button" class="btn" id="Family" value="+ Family" />
+                <input type="button" class="btn" id="Stress" value="+ Stress" />
+                <br />
+                <input type="button" class="btn" id="Weather" value="+ Weather" />
+                <input type="button" class="btn" id="Work" value="+ Work" />
+                <input type="button" class="btn" id="Love" value="+ Love" />
+                <input type="button" class="btn" id="Sleep" value="+ Sleep" />
+                <br />
+                <input type="button" class="btn" id="Health" value="+ Health" />
+                <input type="button" class="btn" id="Money" value="+ Money" />
+                <input type="button" class="btn" id="News" value="+ News" />
+                <input type="button" class="btn" id="Holiday" value="+ Holiday" />
+                <input type="button" class="btn" id="Food" value="+ Food" />
             </div>
-                 <form>
-  <textarea placeholder="Notes..."></textarea>
-   <input type="button" class="saveBtn" id="Food" value="Save" />
-</form>
-</div>
+            <form>
+                <textarea placeholder="Notes..."></textarea>
+                <input type="button" class="saveBtn" id="Food" value="Save" />
+            </form>
+        </div>
     </div>
 </body>
+
 </html>
