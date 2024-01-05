@@ -128,6 +128,16 @@ document.addEventListener("DOMContentLoaded", function () {
             // Toggle the 'clicked' class on the clicked button
             button.classList.toggle("saved");
 
+             // Send emotions and activities data to the server using AJAX
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "save_data.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            const emotionsData = "emotions=" + JSON.stringify(emotionsWithDots);
+            const activitiesData = "activities=" + JSON.stringify(activities);
+
+            xhr.send(emotionsData + "&" + activitiesData);
+
              // Remove the 'clicked' class from all buttons
             buttons.forEach(function (btn) {
                 btn.classList.remove("clicked");

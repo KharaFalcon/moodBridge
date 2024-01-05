@@ -43,7 +43,7 @@ session_start();
         </div>
     </div>
 
-    <h2 id="welcomeMsg"><?php echo $_SESSION['loggedInUser']; ?>, How are you doing?</h2>
+    <h2 id="welcomeMsg"><?php echo $_SESSION['username']; ?>, How are you doing?</h2>
     <p id="date-container"></p>
 
     <div class="container">
