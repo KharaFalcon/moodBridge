@@ -1078,7 +1078,8 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
-  background-color: rgb(237, 227, 205);
+  background-image: linear-gradient(135deg, #FEC163 10%, #DE4313 100%);
+  background-attachment: fixed;
 }
 input,
 button,
@@ -1094,7 +1095,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #23527c;
+  color: rgb(223, 69, 3);
   text-decoration: underline;
 }
 a:focus {
@@ -1116,6 +1117,7 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+  border-radius: 30px;
 }
 .img-rounded {
   border-radius: 6px;
@@ -1935,7 +1937,7 @@ pre code {
     width: 58.33333333%;
   }
   .col-md-6 {
-    width: 50%;
+    width: 100%;
   }
   .col-md-5 {
     width: 41.66666667%;
@@ -2058,7 +2060,7 @@ pre code {
     margin-left: 33.33333333%;
   }
   .col-md-offset-3 {
-    margin-left: 25%;
+ 
   }
   .col-md-offset-2 {
     margin-left: 16.66666667%;
@@ -4163,6 +4165,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
+  color: rgb(252, 222, 199);
+  font-weight:bold;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -5290,7 +5294,7 @@ a.list-group-item-danger.active:focus {
   margin-bottom: 20px;
   background-color: #fff;
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 25px;
   -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
           box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
@@ -5298,10 +5302,10 @@ a.list-group-item-danger.active:focus {
   padding: 15px;
 }
 .panel-heading {
-  padding: 10px 15px;
+  padding: 20px 15px;
   border-bottom: 1px solid transparent;
-  border-top-left-radius: 3px;
-  border-top-right-radius: 3px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
 }
 .panel-heading > .dropdown .dropdown-toggle {
   color: inherit;

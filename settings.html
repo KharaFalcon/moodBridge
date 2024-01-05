@@ -8,7 +8,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <link rel="stylesheet" type="text/css" href="../styles.css" />
+       <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="script.js" defer></script>
     <title>MoodMeter</title>
 </head>
@@ -16,9 +16,9 @@ session_start();
      <div class="header">
         <div class="side-nav">
             <ul class="nav-links">
-                <li><a href="../moodmeter.html">
+                <li><a href="moodmeter.php">
                         <i class="fa-solid fa-comment-dots"></i>
-                        <p>Mood Meter</p>
+                        <p>MoodBridge</p>
                     </a>
                 </li>
                 <li><a href="#">
@@ -26,7 +26,7 @@ session_start();
                         <p>Analytics</p>
                     </a>
                 </li>
-                <li><a href="../profile.html">
+                <li><a href="profile.html">
                         <i class="fa-solid fa-box-open"></i>
                         <p>Profile</p>
                     </a>
@@ -36,6 +36,11 @@ session_start();
                         <p>Settings</p>
                     </a>
                 </li>
+                 <li><a href="login/logout.php">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <p>Logout</p>
+                    </a>
+                </li>
                 <div class="active"></div>
             </ul>
         </div>
@@ -43,11 +48,6 @@ session_start();
     <h1>Settings</h1>
 
 
-
-
-        <p class="lead">Welcome <?php echo $_SESSION['loggedInUser']; ?>!</p>
-
-        <p><a href="logout.php" class="logoutBtn">Log out</a></p>
 
     </div>
 
