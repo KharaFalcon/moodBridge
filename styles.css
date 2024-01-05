@@ -104,7 +104,16 @@ h1 {
     padding-top: 4px;
 
 }
+#errorMsg {
+    background-color: rgba(224, 118, 118, 0.559);
+    color: rgb(190, 61, 61);
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    width: 60%;
+    line-height: 25px;
 
+}
 .container {
     display: inline-block;
 }
@@ -295,6 +304,8 @@ padding-bottom: 50px;
     margin-top: 5px;
     margin-bottom: 25px;
 }
+
+
 
 /*SETTINGS*/
 .lead {

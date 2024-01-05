@@ -43,8 +43,37 @@ cells.forEach(cell => {
         if (!emotionsWithDots.includes(emotionId)) {
             emotionsWithDots.push(emotionId);
         }}
-        else {
-            //error message for only having five emotions needs adding 
+        else if(emotionsWithDots.length >= 5 ) {
+            //error message for only having five emotions
+                const emotionError = document.getElementById('errorMsg');
+                // Check if there is an error
+
+                var errorMsgContent = "Maximum Emotions Exceeded. You can select up to 5 emotions. If you want to add a new emotion, please remove one of your existing selections by clicking on it.";
+                    if (errorMsgContent) {
+                        // If there is an error, set the border
+                        errorMsg.style.border = "solid rgb(190, 61, 61)";
+                        errorMsg.style.padding = "10px";
+                           errorMsg.style.background = "rgba(224, 118, 118, 0.559)";
+                        
+                              // Display the error message for 30 seconds
+        setTimeout(function () {
+            // Remove the border and reset the content after 30 seconds
+            errorMsg.style.border = "none";
+            errorMsg.style.padding = "none";
+            emotionError.textContent = "";
+            errorMsg.style.background = "none";
+        }, 15000); // 30 seconds in milliseconds
+                    
+                        emotionError.textContent = errorMsgContent;
+                        console.log("error");
+        }
+    }
+
+         else if(emotionsWithDots.length = 3){
+            emotionError.textContent = "";  // Set the error message content to an empty string
+        emotionError.style.border = "none";  // Reset the border style
+        emotionError.style.padding = "none";  // Reset the padding style
+            console.log("no error")
         }
          console.log(emotionsWithDots);
         displayEmotion(emotionsWithDots);
@@ -64,6 +93,7 @@ cells.forEach(cell => {
                 emotionsWithDots.splice(index, 1);
             }
         }
+       
    displayEmotion(emotionsWithDots);
                console.log(emotionsWithDots);
     });

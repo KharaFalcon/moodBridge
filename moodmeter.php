@@ -23,7 +23,7 @@ session_start();
                         <p>MoodBridge</p>
                     </a>
                 </li>
-                <li><a href="#">
+                <li><a href="analytics.html">
                         <i class="fa-solid fa-user"></i>
                         <p>Analytics</p>
                     </a>
@@ -51,10 +51,9 @@ session_start();
     <div id=content-container>
         <h2 id="welcomeMsg"><?php echo $_SESSION['username']; ?>, How are you doing today?</h2>
         <p id="date-container"></p>
-
+        <p id="errorMsg"></p>
         <div class="container">
             <div class="dot" draggable="true"><span>Emotion Pin</span></div>
-            <p class="errorMsg"></p>
             <div class="moodBoard">
                 <div class="cell darkRed" id="Enraged">Enraged</div>
                 <div class="cell mediumRed" id="Stressed">Stressed</div>
