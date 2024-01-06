@@ -354,3 +354,8 @@ padding-bottom: 50px;
 .info {
     margin-top: 100px;
 }
+
+/* ANALYTICS */
+.chart-container {
+    margin-left: 200px;
+}

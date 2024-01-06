@@ -23,7 +23,7 @@ session_start();
                         <p>MoodBridge</p>
                     </a>
                 </li>
-                <li><a href="analytics.html">
+                <li><a href="analytics.php">
                         <i class="fa-solid fa-user"></i>
                         <p>Analytics</p>
                     </a>

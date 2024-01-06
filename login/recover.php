@@ -5,7 +5,7 @@
 
 						<?php display_message(); ?>
 
-						<?php recover_password(); ?>
+						
 	
 					</div>
 					<div class="panel panel-success">
