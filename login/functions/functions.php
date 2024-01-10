@@ -94,7 +94,7 @@ return $error_message;
 
 function email_exists($email) {
 
-	$sql = "SELECT id FROM users WHERE email = '$email'";
+	$sql = "SELECT UserId FROM users WHERE email = '$email'";
 
 	$result = query($sql);
 
@@ -117,7 +117,7 @@ function email_exists($email) {
 
 function username_exists($username) {
 
-	$sql = "SELECT id FROM users WHERE username = '$username'";
+	$sql = "SELECT UserId FROM users WHERE username = '$username'";
 
 	$result = query($sql);
 
@@ -153,6 +153,7 @@ return mail($email, $subject, $msg, $headers);
 
 function validate_user_registration(){
 
+	print_r($_POST);
 	$errors = [];
 
 	$min = 3;
@@ -163,8 +164,8 @@ function validate_user_registration(){
 	if($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
-		$first_name 		= clean($_POST['first_name']);
-		$last_name 			= clean($_POST['last_name']);
+		$FirstName 			= clean($_POST['first_name']);
+		$LastName 			= clean($_POST['last_name']);
 		$username 		    = clean($_POST['username']);
 		$email 				= clean($_POST['email']);
 		$password			= clean($_POST['password']);
@@ -172,13 +173,13 @@ function validate_user_registration(){
 
 
 //Errors
-		if(strlen($first_name) < $min) {
+		if(strlen($FirstName) < $min) {
 
 			$errors[] = "Your first name cannot be less than {$min} characters";
 
 		}
 
-		if(strlen($first_name) > $max) {
+		if(strlen($FirstName) > $max) {
 
 			$errors[] = "Your first name cannot be more than {$max} characters";
 
@@ -187,14 +188,14 @@ function validate_user_registration(){
 
 
 
-		if(strlen($last_name) < $min) {
+		if(strlen($LastName) < $min) {
 
 			$errors[] = "Your Last name cannot be less than {$min} characters";
 
 		}
 
 
-		if(strlen($last_name) > $max) {
+		if(strlen($LastName) > $max) {
 
 			$errors[] = "Your Last name cannot be more than {$max} characters";
 
@@ -257,7 +258,7 @@ function validate_user_registration(){
 		} else {
 
 
-			if(register_user($first_name, $last_name, $username, $email, $password)) {
+			if(register_user($FirstName, $LastName, $username, $email, $password)) {
 
 
 
@@ -289,44 +290,45 @@ function validate_user_registration(){
 
 /****************Register user functions ********************/
 
-function register_user($first_name, $last_name, $username, $email, $password) {
-	//take in data 
-	//escape data to prevent sql injection
-	$first_name = escape($first_name);
-	$last_name  = escape($last_name);
+function register_user($FirstName, $LastName, $username, $email, $password)
+{
+	// take in data
+	// escape data to prevent SQL injection
+	$FirstName = escape($FirstName);
+	$LastName  = escape($LastName);
 	$username   = escape($username);
 	$email      = escape($email);
 	$password   = escape($password);
 
-
-//checks if email exists
-	if(email_exists($email)) {
-
-
+	// checks if email exists
+	if (email_exists($email)) {
 		return false;
-
-//checks if username exists
-	} else if (username_exists($username)) {
-
+	} elseif (username_exists($username)) {
 		return false;
-
 	} else {
-		//encrypts passowrd
+		// encrypts password
 		$password   = md5($password);
-	
-		//sql query to insert into database 
-		$sql = "INSERT INTO users(first_name, last_name, username, email, password)";
-		$sql.= " VALUES('$first_name','$last_name','$username','$email','$password')";
+		$user_id = generate_user_id();
+
+		// SQL query to insert into the database
+		$sql = "INSERT INTO users(UserID, FirstName, LastName, username, email, password)";
+		$sql .= " VALUES('$user_id','$FirstName','$LastName','$username','$email','$password')";
 		$result = query($sql);
 		confirm($result);
 
 		return true;
-
 	}
+}
+
+// Function to generate a unique user ID
+function generate_user_id()
+{
+	// You can use any method to generate a unique ID, for example, a combination of timestamp and a random number.
+	// Here, I'm using a simple timestamp as a user ID.
+	return time();
+}
 
 
-
-} 
 
 
 
@@ -421,7 +423,7 @@ function validate_user_login(){
 
 //selects the password from where the email matches
 //active=1 means the account is active 
-		$sql = "SELECT password, username, id FROM users WHERE email = '".escape($email)."'";
+		$sql = "SELECT password, username, UserId FROM users WHERE email = '".escape($email)."'";
 
 		$result = query($sql);
 

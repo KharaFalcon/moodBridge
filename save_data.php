@@ -5,7 +5,7 @@ include('connection.php');
     $servername = "localhost";
     $username = "root";
     $password = "root";
-    $dbname = "login_db";
+    $dbname = "moodBridge";
 
     // Create a connection to the database
     $conn = new mysqli($servername, $username, $password, $dbname);

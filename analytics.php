@@ -4,7 +4,7 @@
 // Assuming you have a MySQL database
 $username = "root";
 $password = "root";
-$database = "login_db";
+$database = "moodBridge";
 try {
   $pdo = new PDO("mysql:host=localhost;databse=$database", $username, $password);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -63,7 +63,7 @@ try {
 
     <?php
     try {
-      $sql = "SELECT emotion1 FROM login_db.emotions_table";
+      $sql = "SELECT emotion1 FROM moodBridge.emotions_table";
       $result = $pdo->query($sql);
 
       if ($result->rowCount() > 0) {
@@ -92,19 +92,24 @@ try {
 
     <script>
       //Setup Block 
-      const emotion1 = <?php echo json_encode($emotion1); ?>;
-      const emotion1Frequency = <?php echo json_encode($emotion1Frequency); ?>;
+
+      const preDefinedLabels = [
+        'Enraged ', 'Stressed ', 'Shocked ', 'Fuming ', 'Angry ', 'Restless ', 'Repulsed ', 'Worried ', 'Uneasy ',
+        'Disgusted', 'Down', 'Apathetic', 'Miserable', 'Lonely', 'Tired', 'Despair', 'Desolate', 'Drained',
+        'Surprised', 'Festive', 'Ecstatc', 'Energized', 'Optimistic', 'Excited', 'Pleasant', 'Hopeful', 'Blissful',
+        'At ease', 'Content', 'Fulfilled', 'Relaxed', 'Restful', 'Balanced', 'Sleepy', 'Tranquil', 'Serene'
+      ];
+
+
+      const emotion1Labels = preDefinedLabels;
+      const emotion1Data = <?php echo json_encode(array_values($emotion1Frequency)); ?>;
+
       console.log(<?php echo json_encode($emotion1Frequency); ?>);
       const data = {
-        labels: ['Enraged', 'Stressed', 'Shocked', 'Fuming', 'Angry', 'Restless', 'Repulsed', 'Worried', 'Uneasy',
-          'Disgusted', 'Down', 'Apathetic', 'Miserable', 'Lonely', 'Tired', 'Despair', 'Desolate', 'Drained',
-          'Surprised', 'Festive', 'Ecstatc', 'Energized', 'Optimistic', 'Excited', 'Pleasant', 'Hopeful', 'Blissful',
-          'At ease', 'Content', 'Fulfilled', 'Relaxed', 'Restful', 'Balanced', 'Sleepy', 'Tranquil', 'Serene'
-
-        ],
+        labels: emotion1Labels,
         datasets: [{
           label: 'Frequency of emotion',
-          data: Object.values(emotion1Frequency),
+          data: Object.values(emotion1Data),
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(255, 159, 64, 0.2)',

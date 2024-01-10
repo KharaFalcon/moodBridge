@@ -1,6 +1,6 @@
 <?php 
 
-$con = mysqli_connect('localhost', 'root', 'root', 'login_db');
+$con = mysqli_connect('localhost', 'root', 'root', 'moodBridge');
 
 
 function row_count($result){
