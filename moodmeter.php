@@ -104,24 +104,25 @@ session_start();
                 <h3>You are feeling.... <span id="selectedEmotion"></span></h3>
                 <p>What has affected your mood?</p>
                 <div class="eventBtn">
-                    <input type="button" class="btn" id="Exercise" value="+ Exercise" />
-                    <input type="button" class="btn" id="Friends" value="+ Friends" />
-                    <input type="button" class="btn" id="Family" value="+ Family" />
-                    <input type="button" class="btn" id="Stress" value="+ Stress" />
+                    <input type="button" class="btn" id="1" value="Exercise" />
+                    <input type="button" class="btn" id="2" value="Friends" />
+                    <input type="button" class="btn" id="3" value="Family" />
+                    <input type="button" class="btn" id="4" value="Stress" />
                     <br />
-                    <input type="button" class="btn" id="Weather" value="+ Weather" />
-                    <input type="button" class="btn" id="Work" value="+ Work" />
-                    <input type="button" class="btn" id="Love" value="+ Love" />
-                    <input type="button" class="btn" id="Sleep" value="+ Sleep" />
+                    <input type="button" class="btn" id="5" value="Weather" />
+                    <input type="button" class="btn" id="6" value="Work" />
+                    <input type="button" class="btn" id="7" value="Love" />
+                    <input type="button" class="btn" id="8" value="Sleep" />
                     <br />
-                    <input type="button" class="btn" id="Health" value="+ Health" />
-                    <input type="button" class="btn" id="Money" value="+ Money" />
-                    <input type="button" class="btn" id="News" value="+ News" />
-                    <input type="button" class="btn" id="Holiday" value="+ Holiday" />
-                    <input type="button" class="btn" id="Food" value="+ Food" />
+                    <input type="button" class="btn" id="9" value="Health" />
+                    <input type="button" class="btn" id="10" value="Money" />
+                    <input type="button" class="btn" id="11" value="News" />
+                    <input type="button" class="btn" id="12" value="Holiday" />
+                    <input type="button" class="btn" id="13" value="Food" />
                 </div>
                 <form>
                     <textarea placeholder="Notes..."></textarea>
+                    <p id="errorDayMax"></p>
                     <input type="button" class="saveBtn" id="Food" value="Save" />
                 </form>
             </div>

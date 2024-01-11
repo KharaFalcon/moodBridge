@@ -1,6 +1,7 @@
 const cells = document.querySelectorAll(".cell");
 var buttonSave = document.querySelectorAll(".saveBtn");
 var buttons = document.querySelectorAll(".btn");
+const notes = document.querySelector("textarea").value;
 
 // Create an array to store emotions with dots
 let emotionsWithDots = [];
@@ -126,20 +127,21 @@ document.addEventListener("DOMContentLoaded", function () {
             // Toggle the 'clicked' class on the clicked button
             button.classList.toggle("clicked");
 
-            // Get the activity ID from the btns
+            // Get the activity ID and name from the button
             const activityId = button.id;
-            // adds activity to array if it has not already been added
+            const activityName = button.value;
+
             // Check if the button was clicked for the second time
             if (clickCounts[activityId] % 2 === 0) {
                 // If it was clicked for the second time, remove the activity from the array
-                const index = activities.indexOf(activityId);
+                const index = activities.findIndex(activity => activity.id === activityId);
                 if (index !== -1) {
                     activities.splice(index, 1);
                 }
             } else {
                 // If it was clicked for the first time, add the activity to the array
-                if (!activities.includes(activityId)) {
-                    activities.push(activityId);
+                if (!activities.some(activity => activity.id === activityId)) {
+                    activities.push({ id: activityId, name: activityName });
                 }
             }
             console.log(activities);
@@ -147,46 +149,77 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+
 document.addEventListener("DOMContentLoaded", function () {
     // Assuming buttonSave, emotionsWithDots, buttons, and activities are defined
     buttonSave.forEach(function (button) {
         button.addEventListener("click", function () {
             // Toggle the 'saved' class on the clicked button
-            button.classList.toggle("saved");
+          if (canSaveToday()) {
+                // Toggle the 'saved' class on the clicked button
+                button.classList.toggle("saved");
 
-            // Send emotions and activities data to the server using AJAX
-            const xhr = new XMLHttpRequest();
-            xhr.open("POST", "save_data.php", true);
-            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                // Send emotions and activities data to the server using AJAX
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "save_data.php", true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-            // Modify this part to include both name and id in emotionsData
-            const emotionsData = "emotions=" + JSON.stringify(emotionsWithDots.map(emotion => ({ id: emotion.id, name: emotion.name })));
-            const activitiesData = "activities=" + JSON.stringify(activities);
+                // Modify this part to include both name and id in emotionsData
+                const emotionsData = "emotions=" + JSON.stringify(emotionsWithDots.map(emotion => ({ id: emotion.id, name: emotion.name })));
+                const activitiesData = "activities=" + JSON.stringify(activities.map(activity => ({ id: activity.id, name: activity.name })));
+                const notesData = "notes=" + encodeURIComponent(notes); // Encode notes to handle special characters
 
-            console.log("Emotions data sent:", emotionsData);
-            console.log("Activities data sent:", activitiesData);
+                console.log("Emotions data sent:", emotionsData);
+                console.log("Activities data sent:", activitiesData);
+                console.log("Notes data sent:", notesData);
 
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4) {
-                    if (xhr.status == 200) {
-                        console.log(xhr.responseText); // Log the server's response
-                    } else {
-                        console.error("Error occurred during the request.");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+                        if (xhr.status == 200) {
+                            console.log(xhr.responseText); // Log the server's response
+                        } else {
+                            console.error("Error occurred during the request.");
+                        }
                     }
-                }
-            };
+                };
 
-            // Send the data to the server
-            xhr.send(emotionsData + '&' + activitiesData);
+                // Send the data to the server
+                xhr.send(emotionsData + '&' + activitiesData  + '&' + notesData);
 
-            // Remove the 'clicked' class from all buttons
-            buttons.forEach(function (btn) {
-                btn.classList.remove("clicked");
-            });
+                // Save the current date as the last saved date
+                saveCurrentDate();
+
+                // Remove the 'clicked' class from all buttons
+                buttons.forEach(function (btn) {
+                    btn.classList.remove("clicked");
+                });
+            } else {
+                // Display an error message or take any appropriate action
+                console.log("You have already saved today.");
+                const errorDayMax = document.getElementById('errorDayMax');
+                // Check if there is an error
+                var errorDayMsgContent = "You have already added your daily entry";
+                   errorDayMax.textContent = errorDayMsgContent;
+
+
+                   
+            }
         });
     });
-});
 
+    // Function to check if the user can save today
+    function canSaveToday() {
+        const lastSavedDate = localStorage.getItem("lastSavedDate");
+        const currentDate = getCurrentDate();
+        return lastSavedDate !== currentDate;
+    }
+
+    // Function to save the current date
+    function saveCurrentDate() {
+        const currentDate = getCurrentDate();
+        localStorage.setItem("lastSavedDate", currentDate);
+    }
+});
 
 // Function to get the current date and time
 function getCurrentDate() {

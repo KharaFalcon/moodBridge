@@ -114,6 +114,12 @@ h1 {
     line-height: 25px;
 
 }
+
+#errorDayMax {
+    color: rgb(190, 61, 61);
+    padding-bottom: 50px;
+
+}
 .container {
     display: inline-block;
 }

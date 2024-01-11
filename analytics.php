@@ -63,7 +63,7 @@ try {
 
     <?php
     try {
-      $sql = "SELECT emotion1 FROM moodBridge.emotions_table";
+      $sql = "SELECT emotion1 FROM moodBridge.Emotions";
       $result = $pdo->query($sql);
 
       if ($result->rowCount() > 0) {
