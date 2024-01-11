@@ -4,8 +4,8 @@ var buttons = document.querySelectorAll(".btn");
 
 // Create an array to store emotions with dots
 let emotionsWithDots = [];
-//creates an array to store activities selected
-let activities = []; 
+// Creates an array to store activities selected
+let activities = [];
 
 // Loop through each cells element
 cells.forEach(cell => {
@@ -25,80 +25,78 @@ cells.forEach(cell => {
         e.preventDefault(); // Prevent default behavior
 
         // Create a dot element
-        //if statment to only select one emotion
-        if(emotionsWithDots.length < 5){
-        const dot = document.createElement("div");
-        dot.classList.add("dot");
+        // if statement to only select one emotion
+        if (emotionsWithDots.length < 5) {
+            const dot = document.createElement("div");
+            dot.classList.add("dot");
 
-        // Append the dot to the cell
-        cell.appendChild(dot);
+            // Append the dot to the cell
+            cell.appendChild(dot);
 
-        // Remove the "hovered" class from the cell
-        cell.classList.remove("hovered");
-    
-           // Get the emotion ID from the cell
-        const emotionId = cell.id;
-
-        // Add the emotion to the array if not already added
-        if (!emotionsWithDots.includes(emotionId)) {
-            emotionsWithDots.push(emotionId);
-        }}
-        else if(emotionsWithDots.length >= 5 ) {
-            //error message for only having five emotions
-                const emotionError = document.getElementById('errorMsg');
-                // Check if there is an error
-
-                var errorMsgContent = "Maximum Emotions Exceeded. You can select up to 5 emotions. If you want to add a new emotion, please remove one of your existing selections by clicking on it.";
-                    if (errorMsgContent) {
-                        // If there is an error, set the border
-                        errorMsg.style.border = "solid rgb(190, 61, 61)";
-                        errorMsg.style.padding = "10px";
-                           errorMsg.style.background = "rgba(224, 118, 118, 0.559)";
-                        
-                              // Display the error message for 30 seconds
-        setTimeout(function () {
-            // Remove the border and reset the content after 30 seconds
-            errorMsg.style.border = "none";
-            errorMsg.style.padding = "none";
-            emotionError.textContent = "";
-            errorMsg.style.background = "none";
-        }, 15000); // 30 seconds in milliseconds
-                    
-                        emotionError.textContent = errorMsgContent;
-                        console.log("error");
-        }
-    }
-
-         else if(emotionsWithDots.length = 3){
-            emotionError.textContent = "";  // Set the error message content to an empty string
-        emotionError.style.border = "none";  // Reset the border style
-        emotionError.style.padding = "none";  // Reset the padding style
-            console.log("no error")
-        }
-         console.log(emotionsWithDots);
-        displayEmotion(emotionsWithDots);
-
-     cell.addEventListener("click", (e) => {
-        const dot = e.target.closest(".dot");
-        if (dot) {
-            // Remove the dot from the cell
-            dot.remove();
+            // Remove the "hovered" class from the cell
+            cell.classList.remove("hovered");
 
             // Get the emotion ID from the cell
             const emotionId = cell.id;
+            const emotionName = cell.textContent;
 
-            // Remove the emotion from the array
-            const index = emotionsWithDots.indexOf(emotionId);
-            if (index !== -1) {
-                emotionsWithDots.splice(index, 1);
+            // Add the emotion to the array if not already added
+            if (!emotionsWithDots.some(emotion => emotion.id === emotionId)) {
+                emotionsWithDots.push({ id: emotionId, name: emotionName });
+            }
+        } else if (emotionsWithDots.length >= 5) {
+            // error message for only having five emotions
+            const emotionError = document.getElementById('errorMsg');
+            // Check if there is an error
+
+            var errorMsgContent = "Maximum Emotions Exceeded. You can select up to 5 emotions. If you want to add a new emotion, please remove one of your existing selections by clicking on it.";
+            if (errorMsgContent != null) {
+                // If there is an error, set the border
+                errorMsg.style.border = "solid rgb(190, 61, 61)";
+                errorMsg.style.padding = "10px";
+                errorMsg.style.background = "rgba(224, 118, 118, 0.559)";
+
+                // Display the error message for 30 seconds
+                setTimeout(function () {
+                    // Remove the border and reset the content after 30 seconds
+                    errorMsg.style.border = "none";
+                    errorMsg.style.padding = "none";
+                    emotionError.textContent = "";
+                    errorMsg.style.background = "none";
+                }, 15000); // 30 seconds in milliseconds
+
+                emotionError.textContent = errorMsgContent;
+                console.log("error");
             }
         }
-       
-   displayEmotion(emotionsWithDots);
-               console.log(emotionsWithDots);
+
+        else if (emotionsWithDots.length === 3) {
+            emotionError.textContent = "";  // Set the error message content to an empty string
+            emotionError.style.border = "none";  // Reset the border style
+            emotionError.style.padding = "none";  // Reset the padding style
+            console.log("no error")
+        }
+        console.log(emotionsWithDots);
+        displayEmotion(emotionsWithDots);
+
+        cell.addEventListener("click", (e) => {
+            const dot = e.target.closest(".dot");
+            if (dot) {
+                // Remove the dot from the cell
+                dot.remove();
+
+                // Get the emotion ID from the cell
+                const emotionId = cell.id;
+
+                // Remove the emotion from the array
+                emotionsWithDots = emotionsWithDots.filter(emotion => emotion.id !== emotionId);
+            }
+
+            displayEmotion(emotionsWithDots);
+            console.log(emotionsWithDots);
+        });
     });
 });
-    });
 
 
 function displayEmotion(emotionIds) {
@@ -108,10 +106,7 @@ function displayEmotion(emotionIds) {
     // Check if there are any emotions to display
     if (emotionIds.length > 0) {
         // Get the text content of each emotion and join them into a string
-        const emotionsText = emotionIds.map(emotionId => {
-            const selectedEmotion = document.getElementById(emotionId);
-            return selectedEmotion.textContent;
-        }).join(', ');
+        const emotionsText = emotionIds.map(emotion => emotion.name).join(', ');
 
         // Display the emotions text in the <p> tag
         displayArea.textContent = emotionsText;
@@ -119,22 +114,22 @@ function displayEmotion(emotionIds) {
         // If there are no emotions, display a default message
         displayArea.textContent = 'No emotions selected';
     }
-   
+
 }
 
 const clickCounts = {};
 document.addEventListener("DOMContentLoaded", function () {
     buttons.forEach(function (button) {
-          clickCounts[button.id] = 0;
+        clickCounts[button.id] = 0;
         button.addEventListener("click", function () {
-             clickCounts[button.id]++;
+            clickCounts[button.id]++;
             // Toggle the 'clicked' class on the clicked button
             button.classList.toggle("clicked");
 
-              // Get the activity ID from the btns
-        const activityId = button.id;
-            //adds activitiy to array if it has not already been added
-                     // Check if the button was clicked for the second time
+            // Get the activity ID from the btns
+            const activityId = button.id;
+            // adds activity to array if it has not already been added
+            // Check if the button was clicked for the second time
             if (clickCounts[activityId] % 2 === 0) {
                 // If it was clicked for the second time, remove the activity from the array
                 const index = activities.indexOf(activityId);
@@ -147,42 +142,56 @@ document.addEventListener("DOMContentLoaded", function () {
                     activities.push(activityId);
                 }
             }
-console.log(activities);
+            console.log(activities);
         });
     });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+    // Assuming buttonSave, emotionsWithDots, buttons, and activities are defined
     buttonSave.forEach(function (button) {
         button.addEventListener("click", function () {
-            // Toggle the 'clicked' class on the clicked button
+            // Toggle the 'saved' class on the clicked button
             button.classList.toggle("saved");
 
-             // Send emotions and activities data to the server using AJAX
+            // Send emotions and activities data to the server using AJAX
             const xhr = new XMLHttpRequest();
             xhr.open("POST", "save_data.php", true);
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-            const emotionsData = "emotions=" + JSON.stringify(emotionsWithDots);
+            // Modify this part to include both name and id in emotionsData
+            const emotionsData = "emotions=" + JSON.stringify(emotionsWithDots.map(emotion => ({ id: emotion.id, name: emotion.name })));
             const activitiesData = "activities=" + JSON.stringify(activities);
 
-            xhr.send(emotionsData + "&" + activitiesData);
+            console.log("Emotions data sent:", emotionsData);
+            console.log("Activities data sent:", activitiesData);
 
-             // Remove the 'clicked' class from all buttons
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        console.log(xhr.responseText); // Log the server's response
+                    } else {
+                        console.error("Error occurred during the request.");
+                    }
+                }
+            };
+
+            // Send the data to the server
+            xhr.send(emotionsData + '&' + activitiesData);
+
+            // Remove the 'clicked' class from all buttons
             buttons.forEach(function (btn) {
                 btn.classList.remove("clicked");
-         
             });
+        });
     });
 });
-});
+
 
 // Function to get the current date and time
 function getCurrentDate() {
-  const dateTime = new Date();
-  return dateTime.toLocaleDateString();
-
- 
+    const dateTime = new Date();
+    return dateTime.toLocaleDateString();
 }
 
 // Target an HTML element to display the current date and time

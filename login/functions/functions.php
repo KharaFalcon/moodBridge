@@ -1,6 +1,9 @@
 <?php
 
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 /****************helper functions ********************/
 
@@ -308,17 +311,39 @@ function register_user($FirstName, $LastName, $username, $email, $password)
 	} else {
 		// encrypts password
 		$password   = md5($password);
-		$user_id = generate_user_id();
+		$UserID = generate_user_id();
 
 		// SQL query to insert into the database
 		$sql = "INSERT INTO users(UserID, FirstName, LastName, username, email, password)";
-		$sql .= " VALUES('$user_id','$FirstName','$LastName','$username','$email','$password')";
+		$sql .= " VALUES('$UserID','$FirstName','$LastName','$username','$email','$password')";
 		$result = query($sql);
 		confirm($result);
+		// Set user_id in session after successful registration
+		$_SESSION['UserID'] = getUserIDByEmail($email);
 
 		return true;
 	}
 }
+
+// Function to get user ID by email
+function getUserIDByEmail($email)
+{
+	global $con; // Assuming $con is your database connection
+
+	$query = $con->prepare("SELECT UserID FROM Users WHERE Email = ?");
+	$query->bind_param("s", $email);
+	$query->execute();
+	$query->bind_result($UserID);
+	$query->fetch();
+
+	// Debugging: Output the value of UserID
+	error_log('UserID from database: ' . $UserID);
+
+	$query->close();
+
+	return $UserID;
+}
+
 
 // Function to generate a unique user ID
 function generate_user_id()
@@ -388,7 +413,7 @@ function validate_user_login(){
 
 				if(login_user($email, $password, $remember)) {
 
-//redirects to admin 
+				//redirects to admin 
 					redirect("../../moodmeter.php");
 
 
@@ -418,66 +443,47 @@ function validate_user_login(){
 
 /****************User login functions ********************/
 
+function login_user($email, $password, $remember)
+{
+	global $con;
 
-	function login_user($email, $password, $remember) {
+	$sql = "SELECT password, username, UserId FROM users WHERE email = ?";
+	$stmt = $con->prepare($sql);
 
-//selects the password from where the email matches
-//active=1 means the account is active 
-		$sql = "SELECT password, username, UserId FROM users WHERE email = '".escape($email)."'";
+	if ($stmt) {
+		$stmt->bind_param("s", $email);
+		$stmt->execute();
+		$stmt->store_result();
 
-		$result = query($sql);
+		if ($stmt->num_rows == 1) {
+			$stmt->bind_result($db_password, $username, $UserID);
+			$stmt->fetch();
 
-		if(row_count($result) == 1) {
-//fetches the result 
-			$row = fetch_array($result);
-
-			$db_password = $row['password'];
-			$username = $row['username'];
-
-//return yes or no if it is able to match
-			if(md5($password) === $db_password) {
-//check if rememeber me button has been clicked 
-				if($remember == "on") {
-					//sets the cookie and holds cookie for a day 
+			if (md5($password) === $db_password) {
+				if ($remember == "on") {
 					setcookie('email', $email, time() + 86400);
-
 				}
 
 				$_SESSION['username'] = $username;
 				$_SESSION['email'] = $email;
+				$_SESSION['UserID'] = $UserID;  // Set user_id in session
 
-
-
+				$stmt->close();
 				return true;
-
 			} else {
-
-
+				$stmt->close();
 				return false;
 			}
-
-
-
-
-
-
-
-
-
-			return true;
-
 		} else {
-
-
+			$stmt->close();
 			return false;
-
-
-
 		}
+	}
+}
 
 
 
-	} // end of function
+// end of function
 
 
 

@@ -57,47 +57,47 @@ session_start();
         <div class="container">
             <div class="dot" draggable="true"><span>Emotion Pin</span></div>
             <div class="moodBoard">
-                <div class="cell darkRed" id="Enraged">Enraged</div>
-                <div class="cell mediumRed" id="Stressed">Stressed</div>
-                <div class="cell lightRed" id="Shocked">Shocked</div>
-                <div class="cell darkOrange" id="Surprised">Surprised</div>
-                <div class="cell mediumOrange" id="Festive">Festive</div>
-                <div class="cell lightOrange" id="Ecstatic">Ecstatic</div>
+                <div class="cell darkRed" id="1">Enraged</div>
+                <div class="cell mediumRed" id="2">Stressed</div>
+                <div class="cell lightRed" id="3">Shocked</div>
+                <div class="cell darkOrange" id="4">Surprised</div>
+                <div class="cell mediumOrange" id="5">Festive</div>
+                <div class="cell lightOrange" id="6">Ecstatic</div>
 
-                <div class="cell darkRed" id="Fuming">Fuming</div>
-                <div class="cell mediumRed" id="Angry">Angry</div>
-                <div class="cell lightRed" id="Restless">Restless</div>
-                <div class="cell darkOrange" id="Energized">Energized</div>
-                <div class="cell mediumOrange" id="Optimistic">Optimistic</div>
-                <div class="cell lightOrange" id="Excited">Excited</div>
+                <div class="cell darkRed" id="7">Fuming</div>
+                <div class="cell mediumRed" id="8">Angry</div>
+                <div class="cell lightRed" id="9">Restless</div>
+                <div class="cell darkOrange" id="10">Energized</div>
+                <div class="cell mediumOrange" id="11">Optimistic</div>
+                <div class="cell lightOrange" id="12">Excited</div>
 
-                <div class="cell darkRed" id="Repulsed">Repulsed</div>
-                <div class="cell mediumRed" id="Worried">Worried</div>
-                <div class="cell lightRed" id="Uneasy">Uneasy</div>
-                <div class="cell darkOrange" id="Pleasant">Pleasant</div>
-                <div class="cell mediumOrange" id="Hopeful">Hopeful</div>
-                <div class="cell lightOrange" id="Blissful">Blissful</div>
+                <div class="cell darkRed" id="13">Repulsed</div>
+                <div class="cell mediumRed" id="14">Worried</div>
+                <div class="cell lightRed" id="15">Uneasy</div>
+                <div class="cell darkOrange" id="16">Pleasant</div>
+                <div class="cell mediumOrange" id="17">Hopeful</div>
+                <div class="cell lightOrange" id="18">Blissful</div>
 
-                <div class="cell darkBlue" id="Disgusted">Disgusted</div>
-                <div class="cell mediumBlue" id="Down">Down</div>
-                <div class="cell lightBlue" id="Apathetic">Apathetic</div>
-                <div class="cell darkGreen" id="At ease">At ease</div>
-                <div class="cell mediumGreen" id="Content">Content</div>
-                <div class="cell lightGreen" id="Fulfilled">Fulfilled</div>
+                <div class="cell darkBlue" id="19">Disgusted</div>
+                <div class="cell mediumBlue" id="20">Down</div>
+                <div class="cell lightBlue" id="21">Apathetic</div>
+                <div class="cell darkGreen" id="22">At ease</div>
+                <div class="cell mediumGreen" id="23">Content</div>
+                <div class="cell lightGreen" id="24">Fulfilled</div>
 
-                <div class="cell darkBlue" id="Miserable">Miserable</div>
-                <div class="cell mediumBlue" id="Lonely">Lonely</div>
-                <div class="cell lightBlue" id="Tired">Tired</div>
-                <div class="cell darkGreen" id="Relaxed">Relaxed</div>
-                <div class="cell mediumGreen" id="Restful">Restful</div>
-                <div class="cell lightGreen" id="Balanced">Balanced</div>
+                <div class="cell darkBlue" id="25">Miserable</div>
+                <div class="cell mediumBlue" id="26">Lonely</div>
+                <div class="cell lightBlue" id="27">Tired</div>
+                <div class="cell darkGreen" id="28">Relaxed</div>
+                <div class="cell mediumGreen" id="29">Restful</div>
+                <div class="cell lightGreen" id="30">Balanced</div>
 
-                <div class="cell darkBlue" id="Despair">Despair</div>
-                <div class="cell mediumBlue" id="Desolate">Desolate</div>
-                <div class="cell lightBlue" id="Drained">Drained</div>
-                <div class="cell darkGreen" id="Sleepy">Sleepy</div>
-                <div class="cell mediumGreen" id="Tranquil">Tranquil</div>
-                <div class="cell lightGreen" id="Serene">Serene</div>
+                <div class="cell darkBlue" id="31">Despair</div>
+                <div class="cell mediumBlue" id="32">Desolate</div>
+                <div class="cell lightBlue" id="33">Drained</div>
+                <div class="cell darkGreen" id="34">Sleepy</div>
+                <div class="cell mediumGreen" id="35">Tranquil</div>
+                <div class="cell lightGreen" id="36">Serene</div>
 
             </div>
             <div class="extra-info">
