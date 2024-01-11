@@ -1,11 +1,6 @@
 <?php include("includes/header.php") ?>
 
 <?php
-session_start();
-if (logged_in()) {
-
-	redirect("admin.php");
-}
 
 
 ?>

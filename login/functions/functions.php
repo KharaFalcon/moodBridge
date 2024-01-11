@@ -167,8 +167,8 @@ function validate_user_registration(){
 	if($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
-		$FirstName 			= clean($_POST['first_name']);
-		$LastName 			= clean($_POST['last_name']);
+		$FirstName 			= clean($_POST['FirstName']);
+		$LastName 			= clean($_POST['LastName']);
 		$username 		    = clean($_POST['username']);
 		$email 				= clean($_POST['email']);
 		$password			= clean($_POST['password']);

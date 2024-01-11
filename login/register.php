@@ -1,5 +1,4 @@
 <?php include("includes/header.php");
-session_start();
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -36,10 +35,10 @@ ini_set('display_errors', 1);
 					<div class="col-lg-6">
 						<form id="register-form" method="post" role="form">
 							<div class="form-group">
-								<input type="text" name="FirstName" id="first_name" tabindex="1" class="form-control" placeholder="First Name" value="" required>
+								<input type="text" name="FirstName" id="FirstName" tabindex="1" class="form-control" placeholder="First Name" value="" required>
 							</div>
 							<div class="form-group">
-								<input type="text" name="LastName" id="last_name" tabindex="1" class="form-control" placeholder="Last Name" value="" required>
+								<input type="text" name="LastName" id="LastName" tabindex="1" class="form-control" placeholder="Last Name" value="" required>
 							</div>
 							<div class="form-group">
 								<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="" required>
