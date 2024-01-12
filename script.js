@@ -1,7 +1,8 @@
 const cells = document.querySelectorAll(".cell");
-var buttonSave = document.querySelectorAll(".saveBtn");
+var buttonSubmit = document.querySelectorAll(".submitBtn");
+
 var buttons = document.querySelectorAll(".btn");
-const notes = document.querySelector("textarea").value;
+
 
 // Create an array to store emotions with dots
 let emotionsWithDots = [];
@@ -151,9 +152,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Assuming buttonSave, emotionsWithDots, buttons, and activities are defined
-    buttonSave.forEach(function (button) {
+    // Assuming buttonSubmit, emotionsWithDots, buttons, and activities are defined
+    buttonSubmit.forEach(function (button) {
         button.addEventListener("click", function () {
+
+            const notes = document.querySelector("textarea").value;
+            console.log(notes)
             // Toggle the 'saved' class on the clicked button
           if (canSaveToday()) {
                 // Toggle the 'saved' class on the clicked button
@@ -211,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function canSaveToday() {
         const lastSavedDate = localStorage.getItem("lastSavedDate");
         const currentDate = getCurrentDate();
-        return lastSavedDate !== currentDate;
+        return lastSavedDate === currentDate;
     }
 
     // Function to save the current date

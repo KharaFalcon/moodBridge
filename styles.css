@@ -247,36 +247,34 @@ padding-bottom: 50px;
     outline: none;
     /* Remove the default focus outline */
 }
-
-.saveBtn {
+.submitBtn {
     margin-bottom: 20px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left:150px;
-    padding-right: 150px;
-    border-radius: 16px;
-    background-color: #ff6200;
-    border: orange solid 1px;
-    transition: background-color 0.3s, border-color 0.3s;
-    /* Add a transition for smooth color change */
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 150px;
+        padding-right: 150px;
+        border-radius: 16px;
+        background-color: #ff6200;
+        border: orange solid 1px;
+        transition: background-color 0.3s, border-color 0.3s;
+        /* Add a transition for smooth color change */
 }
 
-.saveBtn:hover {
+.submitBtn:hover {
     background: #ff6200;
     border-color: #ff6200;
 }
 
-.saveBtn:active,
-.saveBtn.clicked {
+.submitBtn:active,
+.submitBtn.clicked {
     background-color: #5e4436;
     border-color: #5e4436;
 }
 
-.saveBtn:focus {
+.submitBtn:focus {
     outline: none;
     /* Remove the default focus outline */
 }
-
 
 /*HOME*/
 

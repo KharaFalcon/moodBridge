@@ -123,8 +123,8 @@ session_start();
                 <form>
                     <textarea placeholder="Notes..."></textarea>
                     <p id="errorDayMax"></p>
-                    <input type="button" class="saveBtn" id="Food" value="Save" />
                 </form>
+                <input type="button" class="submitBtn" id="submit" value="Submit" />
             </div>
         </div>
     </div>
