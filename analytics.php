@@ -27,104 +27,136 @@ try {
 <body>
   <div class="header">
     <!-- Your navigation code here -->
-  </div>
-  <div class="chart-container">
-    <h1>Analytics</h1>
+    <div class="header">
+      <div class="side-nav">
+        <ul class="nav-links">
+          <li><a href="moodmeter.php">
+              <i class="fa-solid fa-comment-dots"></i>
+              <p>MoodBridge</p>
+            </a>
+          </li>
+          <li><a href="analytics.php">
+              <i class="fa-solid fa-user"></i>
+              <p>Analytics</p>
+            </a>
+          </li>
+          <li><a href="profile.html">
+              <i class="fa-solid fa-box-open"></i>
+              <p>Profile</p>
+            </a>
+          </li>
+          <li><a href="settings.html">
+              <i class="fa-solid fa-chart-pie"></i>
+              <p>Settings</p>
+            </a>
+          </li>
 
-    <?php
-    try {
-      $sql = "SELECT EmotionID, EmotionType FROM moodBridge.Emotions";
-      $result = $pdo->query($sql);
-
-      if ($result->rowCount() > 0) {
-        $emotionLabels = array();
-        while ($row = $result->fetch()) {
-          $EmotionID = $row['EmotionID'];
-          $EmotionName = $row['EmotionType'];
-          $emotionLabels[$EmotionID] = $EmotionName;
-        }
-        unset($result);
-
-        // Count the frequency of each emotion
-        $sql = "SELECT EmotionID FROM moodBridge.Emotions";
-        $result = $pdo->query($sql);
-        $EmotionID = array();
-        while ($row = $result->fetch()) {
-          $EmotionID[] = $row['EmotionID'];
-        }
-        unset($result);
-
-        $emotionFrequency = array_count_values($EmotionID);
-      } else {
-        echo "No records matching the query were found";
-      }
-    } catch (PDOException $e) {
-      die("ERROR: Could not be able to execute $sql. " . $e->getMessage());
-    }
-    ?>
-
-    <div class="chartBox">
-      <canvas id="myChart"></canvas>
+          <li><a href="login/logout.php">
+              <i class="fa-solid fa-chart-pie"></i>
+              <p>Logout</p>
+            </a>
+          </li>
+          <div class="active"></div>
+        </ul>
+      </div>
     </div>
+    <div class="chart-container">
+      <h1>Analytics</h1>
 
-    <script>
-      const preDefinedLabels = [
-        'Enraged ', 'Stressed ', 'Shocked ', 'Fuming ', 'Angry ', 'Restless ', 'Repulsed ', 'Worried ', 'Uneasy ',
-        'Disgusted', 'Down', 'Apathetic', 'Miserable', 'Lonely', 'Tired', 'Despair', 'Desolate', 'Drained',
-        'Surprised', 'Festive', 'Ecstatic', 'Energized', 'Optimistic', 'Excited', 'Pleasant', 'Hopeful', 'Blissful',
-        'At ease', 'Content', 'Fulfilled', 'Relaxed', 'Restful', 'Balanced', 'Sleepy', 'Tranquil', 'Serene'
-      ];
+      <?php
+      try {
+        $sql = "SELECT EmotionID, EmotionType FROM moodBridge.Emotions";
+        $result = $pdo->query($sql);
 
-      const emotionLabels = <?php echo json_encode($emotionLabels); ?>;
-      const emotionData = <?php echo json_encode(array_values($emotionFrequency)); ?>;
+        if ($result->rowCount() > 0) {
+          $emotionLabels = array();
+          while ($row = $result->fetch()) {
+            $EmotionID = $row['EmotionID'];
+            $EmotionName = $row['EmotionType'];
+            $emotionLabels[$EmotionID] = $EmotionName;
+          }
+          unset($result);
 
-      const data = {
-        labels: Object.values(emotionLabels),
-        datasets: [{
-          label: 'Frequency of emotion',
-          data: Object.values(emotionData),
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(201, 203, 207, 0.2)'
-          ],
-          borderColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)',
-            'rgb(75, 192, 192)',
-            'rgb(54, 162, 235)',
-            'rgb(153, 102, 255)',
-            'rgb(201, 203, 207)'
-          ],
-          borderWidth: 1
-        }]
-      };
+          // Count the frequency of each emotion
+          $sql = "SELECT EmotionID FROM moodBridge.Emotions";
+          $result = $pdo->query($sql);
+          $EmotionID = array();
+          while ($row = $result->fetch()) {
+            $EmotionID[] = $row['EmotionID'];
+          }
+          unset($result);
 
-      const config = {
-        type: 'bar',
-        data,
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
+          $emotionFrequency = array_count_values($EmotionID);
+        } else {
+          echo "No records matching the query were found";
+        }
+      } catch (PDOException $e) {
+        die("ERROR: Could not be able to execute $sql. " . $e->getMessage());
+      }
+      ?>
+
+      <div class="chartBox">
+        <canvas id="myChart"></canvas>
+      </div>
+
+      <script>
+        const preDefinedLabels = [
+          'Enraged ', 'Stressed ', 'Shocked ', 'Fuming ', 'Angry ', 'Restless ', 'Repulsed ', 'Worried ', 'Uneasy ',
+          'Disgusted', 'Down', 'Apathetic', 'Miserable', 'Lonely', 'Tired', 'Despair', 'Desolate', 'Drained',
+          'Surprised', 'Festive', 'Ecstatic', 'Energized', 'Optimistic', 'Excited', 'Pleasant', 'Hopeful', 'Blissful',
+          'At ease', 'Content', 'Fulfilled', 'Relaxed', 'Restful', 'Balanced', 'Sleepy', 'Tranquil', 'Serene'
+        ];
+
+        const emotionLabels = <?php echo json_encode($emotionLabels); ?>;
+        const emotionData = <?php echo json_encode(array_values($emotionFrequency)); ?>;
+
+        const data = {
+          labels: Object.values(emotionLabels),
+          datasets: [{
+            label: 'Frequency of emotion',
+            data: Object.values(emotionData),
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(255, 159, 64, 0.2)',
+              'rgba(255, 205, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(201, 203, 207, 0.2)'
+            ],
+            borderColor: [
+              'rgb(255, 99, 132)',
+              'rgb(255, 159, 64)',
+              'rgb(255, 205, 86)',
+              'rgb(75, 192, 192)',
+              'rgb(54, 162, 235)',
+              'rgb(153, 102, 255)',
+              'rgb(201, 203, 207)'
+            ],
+            borderWidth: 1
+          }]
+        };
+
+        const config = {
+          type: 'bar',
+          data,
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
             }
           }
-        }
-      };
+        };
 
-      const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-      );
-    </script>
+        const myChart = new Chart(
+          document.getElementById('myChart'),
+          config
+        );
+      </script>
 
-    <!-- Bootstrap JS -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <!-- Bootstrap JS -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 
 </html>
