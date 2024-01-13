@@ -6,12 +6,11 @@ $username = "root";
 $password = "root";
 $database = "moodBridge";
 try {
-  $pdo = new PDO("mysql:host=localhost;databse=$database", $username, $password);
+  $pdo = new PDO("mysql:host=localhost;dbname=$database", $username, $password);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
   die("Error: Could not connect. " . $e->getMessage());
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,63 +26,41 @@ try {
 
 <body>
   <div class="header">
-    <div class="side-nav">
-      <ul class="nav-links">
-        <li><a href="moodmeter.php">
-            <i class="fa-solid fa-comment-dots"></i>
-            <p>MoodBridge</p>
-          </a>
-        </li>
-        <li><a href="analytics.html">
-            <i class="fa-solid fa-user"></i>
-            <p>Analytics</p>
-          </a>
-        </li>
-        <li><a href="profile.html">
-            <i class="fa-solid fa-box-open"></i>
-            <p>Profile</p>
-          </a>
-        </li>
-        <li><a href="settings.html">
-            <i class="fa-solid fa-chart-pie"></i>
-            <p>Settings</p>
-          </a>
-        </li>
-        <li><a href="login/logout.php">
-            <i class="fa-solid fa-chart-pie"></i>
-            <p>Logout</p>
-          </a>
-        </li>
-        <div class="active"></div>
-      </ul>
-    </div>
+    <!-- Your navigation code here -->
   </div>
   <div class="chart-container">
     <h1>Analytics</h1>
 
     <?php
     try {
-      $sql = "SELECT emotion1 FROM moodBridge.Emotions";
+      $sql = "SELECT EmotionID, EmotionType FROM moodBridge.Emotions";
       $result = $pdo->query($sql);
 
       if ($result->rowCount() > 0) {
-        $emotion1 = array();
+        $emotionLabels = array();
         while ($row = $result->fetch()) {
-          $emotion1[] = $row['emotion1'];
+          $EmotionID = $row['EmotionID'];
+          $EmotionName = $row['EmotionType'];
+          $emotionLabels[$EmotionID] = $EmotionName;
         }
         unset($result);
 
-        //count the frequency of each emotion
-        $emotion1Frequency = array_count_values($emotion1);
+        // Count the frequency of each emotion
+        $sql = "SELECT EmotionID FROM moodBridge.Emotions";
+        $result = $pdo->query($sql);
+        $EmotionID = array();
+        while ($row = $result->fetch()) {
+          $EmotionID[] = $row['EmotionID'];
+        }
+        unset($result);
+
+        $emotionFrequency = array_count_values($EmotionID);
       } else {
         echo "No records matching the query were found";
       }
     } catch (PDOException $e) {
       die("ERROR: Could not be able to execute $sql. " . $e->getMessage());
-
-      unset($pdo);
     }
-
     ?>
 
     <div class="chartBox">
@@ -91,25 +68,21 @@ try {
     </div>
 
     <script>
-      //Setup Block 
-
       const preDefinedLabels = [
         'Enraged ', 'Stressed ', 'Shocked ', 'Fuming ', 'Angry ', 'Restless ', 'Repulsed ', 'Worried ', 'Uneasy ',
         'Disgusted', 'Down', 'Apathetic', 'Miserable', 'Lonely', 'Tired', 'Despair', 'Desolate', 'Drained',
-        'Surprised', 'Festive', 'Ecstatc', 'Energized', 'Optimistic', 'Excited', 'Pleasant', 'Hopeful', 'Blissful',
+        'Surprised', 'Festive', 'Ecstatic', 'Energized', 'Optimistic', 'Excited', 'Pleasant', 'Hopeful', 'Blissful',
         'At ease', 'Content', 'Fulfilled', 'Relaxed', 'Restful', 'Balanced', 'Sleepy', 'Tranquil', 'Serene'
       ];
 
+      const emotionLabels = <?php echo json_encode($emotionLabels); ?>;
+      const emotionData = <?php echo json_encode(array_values($emotionFrequency)); ?>;
 
-      const emotion1Labels = preDefinedLabels;
-      const emotion1Data = <?php echo json_encode(array_values($emotion1Frequency)); ?>;
-
-      console.log(<?php echo json_encode($emotion1Frequency); ?>);
       const data = {
-        labels: emotion1Labels,
+        labels: Object.values(emotionLabels),
         datasets: [{
           label: 'Frequency of emotion',
-          data: Object.values(emotion1Data),
+          data: Object.values(emotionData),
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(255, 159, 64, 0.2)',
@@ -132,7 +105,6 @@ try {
         }]
       };
 
-      //Config Block
       const config = {
         type: 'bar',
         data,
@@ -145,8 +117,6 @@ try {
         }
       };
 
-
-      //Render Block 
       const myChart = new Chart(
         document.getElementById('myChart'),
         config
@@ -155,9 +125,6 @@ try {
 
     <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</body>
-
-</html>
 </body>
 
 </html>

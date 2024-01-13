@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function canSaveToday() {
         const lastSavedDate = localStorage.getItem("lastSavedDate");
         const currentDate = getCurrentDate();
-        return lastSavedDate === currentDate;
+        return lastSavedDate !== currentDate;
     }
 
     // Function to save the current date
