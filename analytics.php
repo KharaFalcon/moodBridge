@@ -40,12 +40,12 @@ try {
               <p>Analytics</p>
             </a>
           </li>
-          <li><a href="profile.html">
+          <li><a href="profile.php">
               <i class="fa-solid fa-box-open"></i>
               <p>Profile</p>
             </a>
           </li>
-          <li><a href="settings.html">
+          <li><a href="settings.php">
               <i class="fa-solid fa-chart-pie"></i>
               <p>Settings</p>
             </a>

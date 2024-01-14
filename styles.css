@@ -314,8 +314,119 @@ padding-bottom: 50px;
 /*SETTINGS*/
 .lead {
     margin-bottom: 20px;
-}}
+}
+}
 
+.containerSettings {
+    background-color: rgb(255, 247, 232);
+    width: 80vw;
+    height: 80vh;
+    margin-left: 0;
+    /* Updated to 0 from 218px */
+    border-right: solid 1px #e1dede;
+    border-radius: 10px;
+    display: flex;
+    margin-left: 220px;
+    /* Add flex display to arrange children side by side */
+}
+
+.subSettings {
+    border-right: solid 1px #e1dede;
+    width: 20vw;
+    height: 80vh;
+    padding-top: 30px;
+}
+
+.generalTitle {
+    padding: 20px;
+    color: gray;
+}
+
+.tablink {
+    padding-top: 30px;
+    background-color:rgb(255, 247, 232);
+    color: gray;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 100%;
+    /* Set width to 100% for full width */
+    text-align: left;
+    /* Align text to the left */
+}
+
+.tablink:hover {
+    background-color: #c5c0c0;
+}
+
+.tabcontent {
+    color: black;
+    padding: 20px;
+    height: 100%;
+    width: 100%;
+    /* Set width to 100% for full width */
+}
+
+#Home {
+    background-color: red;
+}
+
+#News {
+    background-color: #fea64d;
+}
+
+#Contact {
+    background-color: blue;
+}
+
+#About {
+    background-color: orange;
+}
+
+.avatar-container {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 30px;
+    border: rgb(178, 178, 178) 1px solid
+    /* Adjust the spacing between avatar and button */
+}
+
+.updateAvatar {
+    padding: 10px;
+    background-color: #fea64d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+.userDetails {
+    margin: 50px 20px 0 0;
+}
+
+  .userDetails label {
+      display: block;
+      margin-bottom: 5px;
+      text-align:left;
+  }
+
+  .userDetails input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+  }
+
+  .userDetails button {
+      margin-top: 10px;
+  }
 /*PROFILE*/
 .profile h1 {
     margin-top: 50px;
