@@ -97,8 +97,10 @@ $conn->close();
         <div id="Account" class="tabcontent">
             <h3>Account</h3>
             <div class="avatar-container">
-                <img src="avatar.png" alt="Avatar" class="avatar">
-                <button class="updateAvatar" onclick="">Update Avatar</button>
+                <img src="avatar.png" alt="Avatar" class="avatar" id="avatar-image">
+                <input type="file" accept="image/*" id="avatar-input" style="display: none;" onchange="updateAvatar()">
+                <label for="avatar-input" class="updateAvatar">Update Avatar</label>
+                <button onclick="removeAvatar()" class="removeAvatar">Reset Avatar</button>
             </div>
 
             <div class="userDetails">

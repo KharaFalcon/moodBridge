@@ -21,3 +21,26 @@ function openPage(pageName, elmnt, color) {
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+
+
+     function updateAvatar() {
+        var input = document.getElementById('avatar-input');
+        var image = document.getElementById('avatar-image');
+
+        var file = input.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                image.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+     function removeAvatar() {
+        var image = document.getElementById('avatar-image');
+        image.src = 'avatar.png'; // Set the default avatar image path
+    }

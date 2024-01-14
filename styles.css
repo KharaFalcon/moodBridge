@@ -408,6 +408,16 @@ padding-bottom: 50px;
     border-radius: 8px;
 }
 
+.removeAvatar {
+    padding: 10px;
+    background-color: #fea64d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    margin-left: 20px;
+    font-size: 17px;
+}
+
 .userDetails {
     margin: 50px 20px 0 0;
 }
@@ -422,6 +432,8 @@ padding-bottom: 50px;
       width: 100%;
       padding: 8px;
       margin-bottom: 10px;
+      border-radius: 8px;
+    border: 1px solid grey;
   }
 
   .userDetails button {
