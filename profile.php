@@ -1,33 +1,42 @@
 <?php
-function getProfileUserInfo($pdo, $userID)
-{
-    $query = "SELECT * FROM users WHERE id = :userID";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':userID', $userID, PDO::PARAM_INT);
-    $stmt->execute();
+$servername = "localhost";
+$username = "root";
+$password = "root";
+$dbname = "moodBridge";
 
-    // Fetch the user data as an associative array
-    $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-    return $userData;
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 session_start();
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// Check if the user is logged in
+if (!isset($_SESSION['UserID'])) {
+    header("Location: login/login.php"); // Redirect to login page if not logged in
+    exit();
+}
 
-include('login/functions/db.php');
-include('login/functions/functions.php');
+// Fetch user details from the database using prepared statement
+$UserID = $_SESSION['UserID'];
+$sql = "SELECT * FROM Users WHERE UserID = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $UserID);
+$stmt->execute();
+$result = $stmt->get_result();
 
-$userID = $_SESSION['UserID'];
+if ($result && $result->num_rows > 0) {
+    $userDetails = $result->fetch_assoc();
+} else {
+    // Handle the case where user details are not found
+    echo "Error: Unable to fetch user details.";
+    exit();
+}
 
-// Get user information using the function
-$userData = getProfileUserInfo($pdo, $userID);
-
-
-
+$conn->close();
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,6 +83,7 @@ $userData = getProfileUserInfo($pdo, $userID);
                 <div class="active"></div>
             </ul>
         </div>
+    </div>
     </div>
 
     <div class="profile">

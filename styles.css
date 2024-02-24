@@ -85,7 +85,8 @@ body {
     padding: 0;
 }
 h1 {
-    font-family:Impact;
+    font-family:"Poppins",
+        sans-serif;
     padding-bottom: 30px;
     padding-top: 40px;
 }
