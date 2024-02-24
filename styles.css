@@ -37,7 +37,7 @@ font-family: "Poppins", sans-serif;
 }
 
 .active {
-    background: #5e4436;
+    background: #ed6e42;
     width: 100%;
     height: 47px;
     position: absolute;
@@ -81,7 +81,7 @@ font-family: "Poppins", sans-serif;
 
 body {
     text-align: center;
-    background-color:rgb(237, 227, 205);
+    background-color:#fff7e6;
     padding: 0;
 }
 h1 {
@@ -133,7 +133,6 @@ h1 {
 }
 
 .cell {
-    /* center the cell content */
     justify-content: center;
     align-items: center;
     display: flex;
@@ -142,6 +141,7 @@ h1 {
     font-weight: bold;
     background: white;
     border-radius: 3px;
+box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
 .cell.hovered {
@@ -209,6 +209,7 @@ textarea {
     background-color: #f8f8f8;
     font-size: 16px;
     resize: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
 
 .extra-info {
@@ -229,7 +230,6 @@ padding-bottom: 50px;
     background-color: #fea64d;
     border: orange solid 1px;
     transition: background-color 0.3s, border-color 0.3s;
-    /* Add a transition for smooth color change */
 }
 
 .btn:hover {
@@ -239,13 +239,12 @@ padding-bottom: 50px;
 
 .btn:active,
 .btn.clicked {
-    background-color: #5e4436;
-    border-color: #5e4436;
+    background-color: #ed6e42;
+    border-color: #ed6e42;
 }
 
 .btn:focus {
     outline: none;
-    /* Remove the default focus outline */
 }
 .submitBtn {
     margin-bottom: 20px;
@@ -257,7 +256,6 @@ padding-bottom: 50px;
         background-color: #ff6200;
         border: orange solid 1px;
         transition: background-color 0.3s, border-color 0.3s;
-        /* Add a transition for smooth color change */
 }
 
 .submitBtn:hover {
@@ -267,8 +265,8 @@ padding-bottom: 50px;
 
 .submitBtn:active,
 .submitBtn.clicked {
-    background-color: #5e4436;
-    border-color: #5e4436;
+    background-color: #ed6e42;
+    border-color: #ed6e42;
 }
 
 .submitBtn:focus {
@@ -284,18 +282,13 @@ padding-bottom: 50px;
     align-items: center;
     flex-direction: column;
         margin-left: 200px;
-            /* Adjust this value to match the width of your sidebar */
             min-height: 100vh;
-            /* Ensure the container takes at least the full viewport height */
             padding: 20px;
-            /* Add padding if needed */
             box-sizing: border-box;
 
-            /* Additional styles for better responsiveness */
                 @media (max-width: 768px) {
                     #content-container {
                         margin-left: 0;
-                        /* Reset the margin for smaller screens */
                     }
 }
 #welcomeMsg {
@@ -318,16 +311,16 @@ padding-bottom: 50px;
 }
 
 .containerSettings {
-    background-color: rgb(255, 247, 232);
+    background-color: #fff;
     width: 80vw;
     height: 80vh;
     margin-left: 0;
-    /* Updated to 0 from 218px */
-    border-right: solid 1px #e1dede;
-    border-radius: 10px;
+    border: #e1dede solid 1px;
+    border-radius: 6px;
     display: flex;
     margin-left: 220px;
-    /* Add flex display to arrange children side by side */
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    
 }
 
 .subSettings {
@@ -344,7 +337,7 @@ padding-bottom: 50px;
 
 .tablink {
     padding-top: 30px;
-    background-color:rgb(255, 247, 232);
+    background-color:rgb(249, 245, 238);
     color: gray;
     border: none;
     outline: none;
@@ -352,9 +345,8 @@ padding-bottom: 50px;
     padding: 14px 16px;
     font-size: 17px;
     width: 100%;
-    /* Set width to 100% for full width */
     text-align: left;
-    /* Align text to the left */
+
 }
 
 .tablink:hover {
@@ -366,7 +358,7 @@ padding-bottom: 50px;
     padding: 20px;
     height: 100%;
     width: 100%;
-    /* Set width to 100% for full width */
+    border-top: grey;
 }
 
 #Home {
@@ -397,7 +389,6 @@ padding-bottom: 50px;
     border-radius: 50%;
     margin-right: 30px;
     border: rgb(178, 178, 178) 1px solid
-    /* Adjust the spacing between avatar and button */
 }
 
 .updateAvatar {
@@ -432,8 +423,9 @@ padding-bottom: 50px;
       width: 100%;
       padding: 8px;
       margin-bottom: 10px;
-      border-radius: 8px;
-    border: 1px solid grey;
+      border: none;
+      border-radius: 6px;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   }
 
   .userDetails button {
@@ -484,10 +476,19 @@ padding-bottom: 50px;
 
 /* ANALYTICS */
 .chart-container {
-    margin-left: 200px;
+    margin-left: 250px;
 }
 
 .chartBox {
+    width: 700px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+
+}
+
+.chartActivities {
     width: 700px;
 
 }

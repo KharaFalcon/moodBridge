@@ -12,7 +12,7 @@ This is a web app that allows users to track their daily emotions, activities, a
 
 ### Screenshot
 
-![](./MoodBridgeSS.png)
+![](./img/MoodBridgeSS.png)
 
 
 ### Links

@@ -23,24 +23,26 @@ function openPage(pageName, elmnt, color) {
 document.getElementById("defaultOpen").click();
 
 
-     function updateAvatar() {
-        var input = document.getElementById('avatar-input');
-        var image = document.getElementById('avatar-image');
+  function updateAvatar() {
+    var input = document.getElementById('avatar-input');
+    var image = document.getElementById('avatar-image');
+    var hiddenInput = document.getElementById('avatar-hidden-input');
 
-        var file = input.files[0];
+    var file = input.files[0];
 
-        if (file) {
-            var reader = new FileReader();
+    if (file) {
+      var reader = new FileReader();
 
-            reader.onload = function (e) {
-                image.src = e.target.result;
-            };
+      reader.onload = function (e) {
+        image.src = e.target.result;
+        hiddenInput.value = e.target.result; // Store base64 encoded image data in the hidden input
+      };
 
-            reader.readAsDataURL(file);
-        }
+      reader.readAsDataURL(file);
     }
+  }
 
-     function removeAvatar() {
-        var image = document.getElementById('avatar-image');
-        image.src = 'avatar.png'; // Set the default avatar image path
-    }
+  function removeAvatar() {
+    var image = document.getElementById('avatar-image');
+    image.src = 'img/avatar.png'; // Set the default avatar image path
+  }

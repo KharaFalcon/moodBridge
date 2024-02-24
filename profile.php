@@ -79,9 +79,9 @@ $userData = getProfileUserInfo($pdo, $userID);
     <div class="profile">
         <h1>My Profile</h1>
         <div class="image-container">
-            <img src="profileImg.png" alt="Profile Picture" id="yourImg" style="width: 200px">
+            <img src="img/profileImg.png" alt="Profile Picture" id="yourImg" style="width: 200px">
             <h2 class="andSign">&</h2>
-            <img src="profileImg.png" alt="Profile Picture" id="partnerImg" style="width: 200px">
+            <img src="img/profileImg.png" alt="Profile Picture" id="partnerImg" style="width: 200px">
         </div>
         <div class="nameProfile">
             <h3 id="yourName"><?php echo $_SESSION['FirstName']; ?></h3>

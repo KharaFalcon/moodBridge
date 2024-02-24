@@ -1,6 +1,0 @@
-add maximum of four or five emotion need validation in the array and the display of the emotions
-add error messages 
-add removal of activies when clciekd again and remove from array.
-
-for emotions what am i doing in terms of id do i need to class each emotion to and id first 
-data is saying saved but not to database

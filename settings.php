@@ -35,6 +35,29 @@ if ($result && $result->num_rows > 0) {
     exit();
 }
 
+// Process form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Update user details in the database
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+
+    $updateSql = "UPDATE Users SET FirstName=?, LastName=?, Email=?, Username=? WHERE UserID=?";
+    $updateStmt = $conn->prepare($updateSql);
+    $updateStmt->bind_param("ssssi", $firstName, $lastName, $email, $username, $UserID);
+
+    if ($updateStmt->execute()) {
+        // Update successful
+        // You can add a success message or redirect the user to a different page
+    } else {
+        // Update failed
+        // Handle the error
+    }
+
+    $updateStmt->close();
+}
+
 $stmt->close();
 $conn->close();
 ?>
@@ -97,51 +120,40 @@ $conn->close();
         <div id="Account" class="tabcontent">
             <h3>Account</h3>
             <div class="avatar-container">
-                <img src="avatar.png" alt="Avatar" class="avatar" id="avatar-image">
+                <img src="img/avatar.png" alt="Avatar" class="avatar" id="avatar-image">
                 <input type="file" accept="image/*" id="avatar-input" style="display: none;" onchange="updateAvatar()">
                 <label for="avatar-input" class="updateAvatar">Update Avatar</label>
                 <button onclick="removeAvatar()" class="removeAvatar">Reset Avatar</button>
             </div>
 
             <div class="userDetails">
-                <form action="process_form.php" method="post">
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <label for="firstName">First Name:</label>
-                    <input type="text" id="firstNameUp" name="firstName" placeholder="<?php echo $userDetails['FirstName']; ?>" required>
+                    <input type="text" id="firstNameUp" name="firstName" value="<?php echo htmlspecialchars($userDetails['FirstName']); ?>" required>
 
                     <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastNameUp" name="lastName" placeholder="<?php echo $userDetails['LastName']; ?>" required>
+                    <input type="text" id="lastNameUp" name="lastName" value="<?php echo htmlspecialchars($userDetails['LastName']); ?>" required>
 
                     <label for="email">Email:</label>
-                    <input type="email" id="emailUp" name="email" placeholder="<?php echo $userDetails['Email']; ?>" required>
+                    <input type="email" id="emailUp" name="email" value="<?php echo htmlspecialchars($userDetails['Email']); ?>" required>
 
                     <label for="username">Username:</label>
-                    <input type="text" id="usernameUp" name="username" placeholder="<?php echo $userDetails['Username']; ?>" required>
+                    <input type="text" id="usernameUp" name="username" value="<?php echo htmlspecialchars($userDetails['Username']); ?>" required>
 
-                    <button class="updateAvatar" type="submit">Update Account</button>
-
+                    <button class="updateAvatar" type="submit">Save Changes</button>
                 </form>
             </div>
         </div>
-
-
-
-
 
         <div id="Permissions" class="tabcontent">
             <h3>Users and Permissions</h3>
             <p>Some news this fine day!</p>
         </div>
 
-
-
-
-
-
         <div id="Appearance" class="tabcontent">
             <h3>Appearance</h3>
             <p>Get in touch, or swing by for a cup of coffee.</p>
         </div>
-
     </div>
 
     <!-- Bootstrap JS -->
