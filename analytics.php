@@ -20,6 +20,7 @@ try {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="styles.css" />
   <script src="script.js" defer></script>
+  <script src="analytics.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <title>Analytics</title>
 </head>
@@ -99,64 +100,81 @@ try {
         <canvas id="myChart"></canvas>
       </div>
 
-      <script>
-        const preDefinedLabels = [
-          'Enraged ', 'Stressed ', 'Shocked ', 'Fuming ', 'Angry ', 'Restless ', 'Repulsed ', 'Worried ', 'Uneasy ',
-          'Disgusted', 'Down', 'Apathetic', 'Miserable', 'Lonely', 'Tired', 'Despair', 'Desolate', 'Drained',
-          'Surprised', 'Festive', 'Ecstatic', 'Energized', 'Optimistic', 'Excited', 'Pleasant', 'Hopeful', 'Blissful',
-          'At ease', 'Content', 'Fulfilled', 'Relaxed', 'Restful', 'Balanced', 'Sleepy', 'Tranquil', 'Serene'
-        ];
+    </div>
+    <div class="topMoodsContainer">
+      <h3 id="topMoodText">Top moods</h3>
+      <div class="topMoods">
+        <div id="topMoodOne" class="topMoodGroup">#2</div>
+        <div id="topMoodTwo" class="topMoodGroup">#1</div>
+        <div id="topMoodThree" class="topMoodGroup">#3</div>
+      </div>
+    </div>
 
-        const emotionLabels = <?php echo json_encode($emotionLabels); ?>;
-        const emotionData = <?php echo json_encode(array_values($emotionFrequency)); ?>;
+    <div id="year-in-pixels">
 
-        const data = {
-          labels: Object.values(emotionLabels),
-          datasets: [{
-            label: 'Frequency of emotion',
-            data: Object.values(emotionData),
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.2)',
-              'rgba(255, 159, 64, 0.2)',
-              'rgba(255, 205, 86, 0.2)',
-              'rgba(75, 192, 192, 0.2)',
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(153, 102, 255, 0.2)',
-              'rgba(201, 203, 207, 0.2)'
-            ],
-            borderColor: [
-              'rgb(255, 99, 132)',
-              'rgb(255, 159, 64)',
-              'rgb(255, 205, 86)',
-              'rgb(75, 192, 192)',
-              'rgb(54, 162, 235)',
-              'rgb(153, 102, 255)',
-              'rgb(201, 203, 207)'
-            ],
-            borderWidth: 1
-          }]
-        };
+    </div>
+    <script>
+      const preDefinedLabels = [
+        'Enraged ', 'Stressed ', 'Shocked ', 'Fuming ', 'Angry ', 'Restless ', 'Repulsed ', 'Worried ', 'Uneasy ',
+        'Disgusted', 'Down', 'Apathetic', 'Miserable', 'Lonely', 'Tired', 'Despair', 'Desolate', 'Drained',
+        'Surprised', 'Festive', 'Ecstatic', 'Energized', 'Optimistic', 'Excited', 'Pleasant', 'Hopeful', 'Blissful',
+        'At ease', 'Content', 'Fulfilled', 'Relaxed', 'Restful', 'Balanced', 'Sleepy', 'Tranquil', 'Serene'
+      ];
 
-        const config = {
-          type: 'bar',
-          data,
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
+      const emotionLabels = <?php echo json_encode($emotionLabels); ?>;
+      const emotionData = <?php echo json_encode(array_values($emotionFrequency)); ?>;
+
+      const data = {
+        labels: Object.values(emotionLabels),
+        datasets: [{
+          label: 'Frequency of emotion',
+          data: Object.values(emotionData),
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(255, 205, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(201, 203, 207, 0.2)'
+          ],
+          borderColor: [
+            'rgb(255, 99, 132)',
+            'rgb(255, 159, 64)',
+            'rgb(255, 205, 86)',
+            'rgb(75, 192, 192)',
+            'rgb(54, 162, 235)',
+            'rgb(153, 102, 255)',
+            'rgb(201, 203, 207)'
+          ],
+          borderWidth: 1
+        }]
+      };
+
+      const config = {
+        type: 'bar',
+        data,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                stepSize: 1, // Sets the step size to 1 to display only whole numbers
+                precision: 0 // Hides decimal places
               }
             }
           }
-        };
+        }
+      };
 
-        const myChart = new Chart(
-          document.getElementById('myChart'),
-          config
-        );
-      </script>
+      const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+    </script>
 
-      <!-- Bootstrap JS -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>
 
 </html>
