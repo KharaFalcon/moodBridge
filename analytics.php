@@ -1,10 +1,20 @@
 <?php include("login/functions/db.php"); ?>
 
 <?php
+
 // Assuming you have a MySQL database
 $username = "root";
 $password = "root";
 $database = "moodBridge";
+
+session_start();
+
+if (!isset($_SESSION['UserID'])) {
+  header("Location: login/login.php");
+  exit();
+}
+$currentUserId = $_SESSION['UserID'];
+
 try {
   $pdo = new PDO("mysql:host=localhost;dbname=$database", $username, $password);
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -66,7 +76,8 @@ try {
 
       <?php
       try {
-        $sql = "SELECT EmotionID, EmotionType FROM moodBridge.Emotions";
+        $sql = "SELECT EmotionID, EmotionType FROM moodBridge.Emotions WHERE UserId = " . $currentUserId;
+
         $result = $pdo->query($sql);
 
         if ($result->rowCount() > 0) {
@@ -79,17 +90,28 @@ try {
           unset($result);
 
           // Count the frequency of each emotion
-          $sql = "SELECT EmotionID FROM moodBridge.Emotions";
+          $sql = "SELECT EmotionID FROM moodBridge.Emotions WHERE UserId = " . $currentUserId;
           $result = $pdo->query($sql);
           $EmotionID = array();
           while ($row = $result->fetch()) {
             $EmotionID[] = $row['EmotionID'];
           }
           unset($result);
-
+          // Fetch the frequency of each emotion
           $emotionFrequency = array_count_values($EmotionID);
-        } else {
-          echo "No records matching the query were found";
+
+          // Sort emotions by frequency in descending order
+          arsort($emotionFrequency);
+
+          // Fetch the top three most frequent emotion IDs
+          $topThreeEmotionIDs = array_keys($emotionFrequency);
+          $topThreeEmotionIDs = array_slice($topThreeEmotionIDs, 0, 3);
+
+          // Get the corresponding emotion names for the top three IDs
+          $topThreeEmotions = array();
+          foreach ($topThreeEmotionIDs as $emotionID) {
+            $topThreeEmotions[$emotionID] = $emotionLabels[$emotionID];
+          }
         }
       } catch (PDOException $e) {
         die("ERROR: Could not be able to execute $sql. " . $e->getMessage());
@@ -101,18 +123,26 @@ try {
       </div>
 
     </div>
+    <div class="bottomAnalytics">
     <div class="topMoodsContainer">
       <h3 id="topMoodText">Top moods</h3>
       <div class="topMoods">
-        <div id="topMoodOne" class="topMoodGroup">#2</div>
-        <div id="topMoodTwo" class="topMoodGroup">#1</div>
-        <div id="topMoodThree" class="topMoodGroup">#3</div>
+        <?php $counter = 1; ?>
+        <?php foreach ($topThreeEmotions as $EmotionID => $EmotionName) : ?>
+          <div id="topMood<?php echo $counter; ?>" class="topMoodGroup <?php echo $class; ?>">
+            <h4>#<?php echo $counter; ?></h4>
+            <h3>Rank</h3>
+            <h2><?php echo $EmotionName; ?></h2>
+          </div>
+          <?php $counter++; ?>
+        <?php endforeach; ?>
       </div>
     </div>
 
     <div id="year-in-pixels">
 
     </div>
+        </div>
     <script>
       const preDefinedLabels = [
         'Enraged ', 'Stressed ', 'Shocked ', 'Fuming ', 'Angry ', 'Restless ', 'Repulsed ', 'Worried ', 'Uneasy ',

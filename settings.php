@@ -152,7 +152,7 @@ $conn->close();
 
         <div id="Appearance" class="tabcontent">
             <h3>Appearance</h3>
-            <p>Get in touch, or swing by for a cup of coffee.</p>
+                <div class="checkbox-wrapper"><input type="checkbox" class="darkMode"> <em>Dark Mode</em></div>
         </div>
     </div>
 

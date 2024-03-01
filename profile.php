@@ -89,9 +89,9 @@ $conn->close();
     <div class="profile">
         <h1>My Profile</h1>
         <div class="image-container">
-            <img src="img/profileImg.png" alt="Profile Picture" id="yourImg" style="width: 200px">
+            <img src="img/avatar.png" alt="Profile Picture" id="yourImg" style="width: 200px; border-radius:250px; border: solid grey">
             <h2 class="andSign">&</h2>
-            <img src="img/profileImg.png" alt="Profile Picture" id="partnerImg" style="width: 200px">
+            <img src="img/avatar.png" alt="Profile Picture" id="partnerImg" style="width: 200px; border-radius:250px; border:solid grey">
         </div>
         <div class="nameProfile">
             <h3 id="yourName"><?php echo $_SESSION['FirstName']; ?></h3>

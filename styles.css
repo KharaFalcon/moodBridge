@@ -432,6 +432,79 @@ padding-bottom: 50px;
   .userDetails button {
       margin-top: 10px;
   }
+
+        em {
+            margin-left: 20px;
+            float: left;
+            margin-top: 50px;
+        }
+
+  .checkbox-wrapper .darkMode {
+      appearance: none;
+      background-color: #dfe1e4;
+      border-radius: 72px;
+      border-style: none;
+      flex-shrink: 0;
+      height: 20px;
+      margin: 0;
+      position: relative;
+      width: 30px;
+      margin-top: 50px;
+      float: left;
+
+  }
+
+  .checkbox-wrapper .darkMode::before {
+      bottom: -6px;
+      content: "";
+      left: -6px;
+      position: absolute;
+      right: -6px;
+      top: -6px;
+  }
+
+  .checkbox-wrapper .darkMode,
+  .checkbox-wrapper .darkMode::after {
+      transition: all 100ms ease-out;
+  }
+
+  .checkbox-wrapper .darkMode::after {
+      background-color: #fff;
+      border-radius: 50%;
+      content: "";
+      height: 14px;
+      left: 3px;
+      position: absolute;
+      top: 3px;
+      width: 14px;
+  }
+
+  .checkbox-wrapper input[type=checkbox] {
+      cursor: default;
+  }
+
+  .checkbox-wrapper .darkMode:hover {
+      background-color: #c9cbcd;
+      transition-duration: 0s;
+  }
+
+  .checkbox-wrapper .darkMode:checked {
+      background-color: #6e79d6;
+  }
+
+  .checkbox-wrapper .darkMode:checked::after {
+      background-color: #fff;
+      left: 13px;
+  }
+
+  .checkbox-wrapper :focus:not(.focus-visible) {
+      outline: 0;
+  }
+
+  .checkbox-wrapper .darkMode:checked:hover {
+      background-color: #535db3;
+  }
+
 /*PROFILE*/
 .profile h1 {
     margin-top: 50px;
@@ -446,9 +519,11 @@ padding-bottom: 50px;
 }
 
 .andSign {
-    border: solid 1px black;
+    border: solid 1px #fff;
     padding: 10px 15px;
     border-radius: 50px;
+    background: #ff6200;
+    color: #fff;
 }
 
 .image-container img,
@@ -501,6 +576,7 @@ padding-bottom: 50px;
     margin: 50px 0 0 250px;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    order:1;
 }
 
 .topMoods {
@@ -514,42 +590,67 @@ padding-bottom: 50px;
     padding: 20px;
 }
 .topMoodGroup {
-    background-color: red;
     width: 70px;
     height: 130px;
     margin: 30px 10px 10px 10px;
     border-radius: 25px;
     padding: 20px;
 
+    h2 {
+        font-size: 12px;
+        margin-top: 20px;
+        margin-left: -10px;
+    }
+
+    h3 {
+        font-size:12px;
+        font-weight:100
+    }
+
+    h4 {
+        background-color: #ff6200;
+        border-radius: 25px;
+        padding: 5px;
+        margin-bottom: 5px;
+
+    }
 }
 
-#topMoodOne {
+#topMood2 {
 order: 1;
 background-color:#ffd8af;
 
 }
 
-#topMoodTwo {
+#topMood1 {
 order: 2;
 background-color: #fea64d;
 height: 160px;
 margin-top: 20px;
+padding-top: 35px;
 
 }
 
-#topMoodThree {
+#topMood3 {
 order: 3;
 background-color: #ffd8af;
 
 }
 
 #year-in-pixels {
-    margin: 50px 250px 50px 250px;
+    margin: 50px;
     background-color: #fff;
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     border-radius: 8px;
+    order: 2;
+    height: 250px;
+    width: 870px;
 
+}
+
+.bottomAnalytics {
+    display: flex;
 }
 
 .cube {
