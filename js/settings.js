@@ -46,3 +46,13 @@ document.getElementById("defaultOpen").click();
     var image = document.getElementById('avatar-image');
     image.src = 'img/avatar.png'; // Set the default avatar image path
   }
+
+
+  // JavaScript to toggle dark mode based on checkbox state
+document.getElementById('darkModeCheckbox').addEventListener('change', function() {
+    if(this.checked) {
+        document.body.classList.add('dark-mode');
+    } else {
+        document.body.classList.remove('dark-mode');
+    }
+});

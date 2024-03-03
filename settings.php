@@ -68,7 +68,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/styles.css" />
     <script src="js/script.js" defer></script>
     <script src="js/settings.js" defer></script>
     <title>MoodMeter</title>
@@ -152,8 +152,10 @@ $conn->close();
 
         <div id="Appearance" class="tabcontent">
             <h3>Appearance</h3>
-                <div class="checkbox-wrapper"><input type="checkbox" class="darkMode"> <em>Dark Mode</em></div>
+            <div class="checkbox-wrapper"><input type="checkbox" class="darkMode" id="darkModeCheckbox"><em>Dark Mode</em></div>
         </div>
+
+    </div>
     </div>
 
     <!-- Bootstrap JS -->

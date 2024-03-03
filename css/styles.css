@@ -675,3 +675,60 @@ background-color: #ffd8af;
     .yellow {
         background-color: yellow;
     }
+
+
+    /* DARK MODE */
+
+    /* Media query to enable dark mode based on checkbox state */
+    @media (prefers-color-scheme: dark) {
+        body:not(.dark-mode) {
+            background-color: #1e1e1e;
+            /* Dark background color */
+            color: #ffffff;
+            /* Dark text color */
+        }
+
+        textarea:not(.dark-mode) {
+            background-color: #656464;
+            color: #ffffff;
+        }
+
+        .chartBox:not(.dark-mode) {
+            background-color: #6564644a;
+        }
+
+        .topMoodsContainer:not(.dark-mode) {
+            background-color: #6564644a;
+        }
+
+        #year-in-pixels:not(.dark-mode) {
+            background-color: #6564644a;
+        }
+
+        .containerSettings:not(.dark-mode) {
+            background-color: #6564644a;
+            color: white;
+        }
+
+
+        .userDetails:not(.dark-mode) {
+            color: white;
+        }
+
+        input:not(.dark-mode) {
+            background-color: #aaa7a764;
+            color: white;
+        }
+
+        h2:not(.dark-mode),  h3:not(.dark-mode) {
+            color: white;
+        }
+
+        em:not(.dark-mode) {
+            color: white;
+        }
+
+        .tablink:not(.dark-mode) {
+            background-color: #6564644a;
+        }
+    }
