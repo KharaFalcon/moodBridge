@@ -101,6 +101,7 @@ cells.forEach(cell => {
 });
 
 
+
 function displayEmotion(emotionIds) {
     // Get the display area element
     const displayArea = document.getElementById('selectedEmotion');
@@ -236,3 +237,6 @@ const dateDisplay = document.getElementById("date-container");
 
 // Set the innerHTML of the element to the current date and time returned by the function
 dateDisplay.innerHTML = getCurrentDate();
+
+
+   

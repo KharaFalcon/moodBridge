@@ -88,6 +88,15 @@ $conn->close();
 
     <div class="profile">
         <h1>My Profile</h1>
+        <div class="partnerCodeContainer">
+            <div id="partnerInputContainer">
+                <h3 class="partnerCodeText">To add and connect to a partner enter their code below:</h3>
+                <textarea class="partnerCodeInput" placeholder="Enter 10 digit code"></textarea>
+                <button class="partnerAddBtn">Add</button>
+            </div>
+            <h4 class="partnerCodeShare">Share this code to connect with a partner:</h4>
+            <h4 id="shareId"><?php echo $UserID; ?></h4>
+        </div>
         <div class="image-container">
             <img src="img/avatar.png" alt="Profile Picture" id="yourImg" style="width: 200px; border-radius:250px; border: solid grey">
             <h2 class="andSign">&</h2>
