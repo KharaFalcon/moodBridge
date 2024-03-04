@@ -676,6 +676,232 @@ background-color: #ffd8af;
         background-color: yellow;
     }
 
+/* RESPONSIVE DESIGN */
+
+@media only screen and (max-width: 480px) {
+    /* MOODMETER */
+    .side-nav {
+       display: none; /*just for now while working styles TODO*/
+    }
+
+    #content-container {
+        margin: 0;
+  
+
+    #welcomeMsg {
+        font-size: 25px;
+        margin-top: 20px;
+    }
+    #date-container {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+}
+
+.dot {
+    width: 20px;
+    height: 20px;
+
+    span {
+        padding-top: 0;
+    }
+}
+
+    .moodBoard {
+            grid-template-columns: repeat(6, 68px);
+            grid-template-rows: repeat(6, 68px);
+            grid-gap: 4px;
+            padding-right: 12px;
+
+        }
+
+        .cell {
+            font-size: 0.7rem;
+        }
+
+
+        /*SETTINGS*/
+        .containerSettings {
+            margin-left: 25px;
+            width: 90vw;
+
+        
+        }
+
+        .avatar {
+            width: 60px;
+            height: 60px;
+        }
+
+        .avatar-container {
+            margin-top: 25px;
+        }
+
+        .updateAvatar {
+            padding: 10px;
+            font-size: 10px;
+        }
+
+        .removeAvatar {
+            padding: 10px;
+            font-size: 10px;
+        }
+
+        .subSettings {
+            width: 20vw;
+        }
+
+        .generalTitle {
+            font-size: 10px;
+        }
+
+        .tablink {
+            font-size: 12px;
+       
+        }
+
+        /*ANALYTICS*/
+
+        .chart-container {
+            margin-left: 50px;
+        }
+    .chartBox {
+        width: 325px;
+    }
+
+    .topMoodsContainer {
+        width: 200px;
+        height: 200px;
+        margin-left: 50px;
+    }
+
+    .topMoodGroup {
+        width: 55px;
+        height: 95px;
+        margin: 3px 4px 3px 4px;
+
+        h2 {
+            font-size: 9px;
+            margin-top: 2px;
+            margin-left: -10px;
+        }
+
+        h3 {
+            margin-left: -5px;
+        }
+
+        h4 {
+            padding: 5px 28px 5px 4px;
+            margin-bottom: 5px;
+            margin-left: -6px;
+        }
+    }
+
+    #topMood1 {
+        height: 140px;
+        margin-top: -10px;
+        padding-top: 30px;
+    }
+    }
+
+
+@media only screen and (max-width: 852px) {
+    /* MOODMETER */
+    .side-nav {
+        padding: 0;
+        width: 150px;
+        /*just for now while working styles TODO*/
+    }
+
+    #content-container {
+        margin-left: 150px;
+
+
+        #welcomeMsg {
+            font-size: 25px;
+            margin-top: 20px;
+        }
+
+        #date-container {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .dot {
+        width: 20px;
+        height: 20px;
+
+        span {
+            padding-top: 0;
+        }
+    }
+
+    .moodBoard {
+        grid-template-columns: repeat(6, 80px);
+        grid-template-rows: repeat(6, 80px);
+        grid-gap: 4px;
+            padding-right: 7px;
+
+    }
+
+    .cell {
+        font-size: 0.9rem;
+    }
+
+  /*SETTINGS*/
+  .containerSettings {
+    width: 72vw;
+    margin-left: 159px;
+  }
+
+  .avatar {
+      width: 80px;
+      height: 80px;
+  }
+
+  /*ANALYTICS*/
+  .chartBox {
+    width: 325px;
+  }
+
+  .topMoodsContainer {
+      width: 200px;
+      height: 200px;
+}
+
+.topMoodGroup {
+    width: 55px;
+    height: 95px;
+    margin: 3px 4px 3px 4px;
+
+    h2 {
+            font-size: 9px;
+            margin-top: 2px;
+            margin-left: -10px;
+        }
+
+    h3 {
+        margin-left: -5px;
+    }
+
+    h4 {
+        padding: 5px 28px 5px 4px;
+        margin-bottom: 5px;
+        margin-left: -6px;
+    }
+}
+
+#topMood1 {
+    height: 140px;
+    margin-top: -10px;
+    padding-top: 30px;
+}
+}
+
+
+
+
 
     /* DARK MODE */
 
