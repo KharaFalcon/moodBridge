@@ -149,10 +149,12 @@ $conn->close();
             <h3>Users and Permissions</h3>
             <p>Some news this fine day!</p>
         </div>
-
         <div id="Appearance" class="tabcontent">
             <h3>Appearance</h3>
-            <div class="checkbox-wrapper"><input type="checkbox" class="darkMode" id="darkModeCheckbox"><em>Dark Mode</em></div>
+            <div class="checkbox-wrapper">
+                <input type="checkbox" class="darkMode" id="darkModeCheckbox">
+                <label for="darkModeCheckbox">Dark Mode</label>
+            </div>
         </div>
 
     </div>

@@ -48,11 +48,12 @@ document.getElementById("defaultOpen").click();
   }
 
 
-  // JavaScript to toggle dark mode based on checkbox state
-document.getElementById('darkModeCheckbox').addEventListener('change', function() {
-    if(this.checked) {
-        document.body.classList.add('dark-mode');
-    } else {
-        document.body.classList.remove('dark-mode');
-    }
-});
+ const darkModeCheckbox = document.getElementById('darkModeCheckbox');
+
+ darkModeCheckbox.addEventListener('change', function () {
+   if (this.checked) {
+     document.body.classList.add('darkMode');
+   } else {
+     document.body.classList.remove('darkMode');
+   }
+ });

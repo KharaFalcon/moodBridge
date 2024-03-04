@@ -679,56 +679,56 @@ background-color: #ffd8af;
 
     /* DARK MODE */
 
-    /* Media query to enable dark mode based on checkbox state */
-    @media (prefers-color-scheme: dark) {
-        body:not(.dark-mode) {
+    
+        .darkMode {
+         body {
             background-color: #1e1e1e;
             /* Dark background color */
             color: #ffffff;
             /* Dark text color */
         }
 
-        textarea:not(.dark-mode) {
+         textarea {
             background-color: #656464;
             color: #ffffff;
         }
 
-        .chartBox:not(.dark-mode) {
+        .chartBox {
             background-color: #6564644a;
         }
 
-        .topMoodsContainer:not(.dark-mode) {
+        .topMoodsContainer {
             background-color: #6564644a;
         }
 
-        #year-in-pixels:not(.dark-mode) {
+        #year-in-pixels {
             background-color: #6564644a;
         }
 
-        .containerSettings:not(.dark-mode) {
+        .containerSettings {
             background-color: #6564644a;
             color: white;
         }
 
 
-        .userDetails:not(.dark-mode) {
+        .userDetails {
             color: white;
         }
 
-        input:not(.dark-mode) {
+        input {
             background-color: #aaa7a764;
             color: white;
         }
 
-        h2:not(.dark-mode),  h3:not(.dark-mode) {
+       h2,  h3 {
             color: white;
         }
 
-        em:not(.dark-mode) {
+        em {
             color: white;
         }
 
-        .tablink:not(.dark-mode) {
+        .tablink {
             background-color: #6564644a;
         }
-    }
+        }
