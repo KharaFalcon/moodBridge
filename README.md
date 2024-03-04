@@ -2,6 +2,7 @@
 This is a web app that allows users to track their daily emotions, activities, and notes, and will eventually enable connectivity with a partner for mood sharing and analysis. 
 
 - [Overview](#overview)
+  - [Wireframe](#wireframe)
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
@@ -9,6 +10,9 @@ This is a web app that allows users to track their daily emotions, activities, a
   - [Continued development](#continued-development)
 
 ## Overview
+
+### Wireframe
+![](./img/wireframeHP.png)
 
 ### Screenshot
 
@@ -24,6 +28,7 @@ This is a web app that allows users to track their daily emotions, activities, a
 
 - Semantic HTML5 markup
 - CSS custom properties
+- JavaScript
 - Flexbox
 - CSS Grid
 - PHP
