@@ -1,8 +1,6 @@
 const cells = document.querySelectorAll(".cell");
 var buttonSubmit = document.querySelectorAll(".submitBtn");
-
 var buttons = document.querySelectorAll(".btn");
-
 
 // Create an array to store emotions with dots
 let emotionsWithDots = [];
@@ -231,12 +229,11 @@ function getCurrentDate() {
     const dateTime = new Date();
     return dateTime.toLocaleDateString();
 }
-
-// Target an HTML element to display the current date and time
-const dateDisplay = document.getElementById("date-container");
-
-// Set the innerHTML of the element to the current date and time returned by the function
-dateDisplay.innerHTML = getCurrentDate();
-
-
-   
+document.addEventListener('DOMContentLoaded', function () {
+  const dateDisplay = document.getElementById('date-container');
+  if (dateDisplay) {
+    dateDisplay.innerHTML = getCurrentDate();
+  } else {
+    console.error('date-container element not found.');
+  }
+});
