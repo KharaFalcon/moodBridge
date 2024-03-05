@@ -119,7 +119,7 @@ session_start();
                     <input type="button" class="btn" id="13" value="Food" />
                 </div>
                 <form>
-                    <textarea placeholder="Notes..."></textarea>
+                    <textarea id="notesInput" placeholder="Notes..."></textarea>
                     <p id="errorDayMax"></p>
                 </form>
                 <input type="button" class="submitBtn" id="submit" value="Submit" />

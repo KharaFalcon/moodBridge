@@ -30,7 +30,6 @@ try {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="css/styles.css" />
   <script src="js/script.js" defer></script>
-  <script src="js/analytics.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <title>Analytics</title>
 </head>
@@ -99,6 +98,7 @@ try {
           unset($result);
           // Fetch the frequency of each emotion
           $emotionFrequency = array_count_values($EmotionID);
+          $totalFrequency = array_sum($emotionFrequency);
 
           // Sort emotions by frequency in descending order
           arsort($emotionFrequency);
@@ -152,6 +152,11 @@ try {
         <div class="pieBackground">
           <h2 id="pieText">What is affecting you the most?</h2>
           <canvas id="pieActivityChart"></canvas>
+        </div>
+
+        <div class="inputFrequency">
+          <h3 id="inputFrequencyVal"><?php echo $totalFrequency;?></h3>
+          <h4 id="inputContext">Entries in total</h4>
         </div>
       </div>
       <script>

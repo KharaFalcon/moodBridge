@@ -154,8 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Assuming buttonSubmit, emotionsWithDots, buttons, and activities are defined
     buttonSubmit.forEach(function (button) {
         button.addEventListener("click", function () {
-
-            const notes = document.querySelector("textarea").value;
+             const notes = document.getElementById('notesInput').value;
             console.log(notes)
             // Toggle the 'saved' class on the clicked button
           if (canSaveToday()) {

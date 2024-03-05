@@ -540,6 +540,9 @@ padding-bottom: 50px;
     color: var(--white);
 }
 
+.image-container {
+    margin-left: 250px;
+}
 .image-container img,
 .image-container h2 {
     margin-top: 50px;
@@ -558,11 +561,10 @@ padding-bottom: 50px;
 
 #pName {
     margin-left: 200px;
+    margin-bottom: 100px;
+    color: black;
 }
 
-.info {
-    margin-top: 100px;
-}
 
 .partnerCodeContainer {
     width: 78vw;
@@ -577,7 +579,7 @@ padding-bottom: 50px;
     margin-top: 15px;
 }
 
-.partnerCodeInput {
+#partnerCodeInput {
     height: 50px;
     width: 50vw;
     order: 2;
@@ -644,10 +646,10 @@ h4 {
 }
 
 .topMoodsContainer {
-    width: 300px;
-    height: 300px;
+    width: 315px;
+    height: 315px;
     background-color:var(--white);
-    margin: 50px 0 0 150px;
+    margin: 32px 0 0 50px;
     border-radius: 8px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     order:1;
@@ -715,6 +717,7 @@ background-color: #ffd8af;
     display: flex;
     align-items: center;
     margin-bottom: 50px;
+    justify-content: space-evenly;
 }
 #pieActivityChart {
     height: 300px;
@@ -733,9 +736,35 @@ background-color: #ffd8af;
 }
 
 #pieText {
-    font-size: 15px;
+    font-size: 18px;
     margin-top:10px;
 
+}
+
+.inputFrequency {
+    width: 315px;
+    height: 315px;
+    margin-top: 30px;
+    background-color:var(--white);
+    margin: 32px 0 0 50px;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#inputFrequencyVal {
+    font-size: 120px;
+    order:1;
+    color:var(--bright-orange);
+}
+
+#inputContext {
+    order:2;
+    font-size: 18px;
 }
 
 

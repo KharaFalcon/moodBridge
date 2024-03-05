@@ -83,7 +83,7 @@ $conn->close();
                         <p>MoodBridge</p>
                     </a>
                 </li>
-                <li><a href="#">
+                <li><a href="analytics.php">
                         <i class="fa-solid fa-user"></i>
                         <p>Analytics</p>
                     </a>
@@ -93,7 +93,7 @@ $conn->close();
                         <p>Profile</p>
                     </a>
                 </li>
-                <li><a href="settings.php">
+                <li><a href="#">
                         <i class="fa-solid fa-chart-pie"></i>
                         <p>Settings</p>
                     </a>

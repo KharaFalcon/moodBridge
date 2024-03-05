@@ -11,7 +11,9 @@
 	<script src="js/scripts.js"></script>
 </head>
 <body>
-
 	<div class="container">
+</div>
+<?php 
+
 
 
